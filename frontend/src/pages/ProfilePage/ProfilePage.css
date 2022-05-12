@@ -1,0 +1,103 @@
+.profile {
+  display: grid;
+  margin-top: 2rem;
+  margin-left: 1rem;
+  margin-right: 5rem;
+}
+
+.profile-name {
+  display: flex;
+  justify-content: center;
+}
+.profile h1,
+h3 {
+  text-align: center;
+}
+
+.profile ul {
+  display: block;
+  padding: 2rem;
+}
+.profile .body {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+}
+.row {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+.col {
+  margin: 1rem;
+}
+
+.aboutme-container {
+  border: 1px solid black;
+  border-radius: 17px;
+  margin-top: 3em;
+}
+
+.projects-container {
+  border: 1px solid black;
+  border-radius: 17px;
+}
+
+.coding-container {
+  border: 1px solid black;
+  border-radius: 17px;
+}
+
+.profile-buttons,
+.projects-button,
+.aboutme-button,
+.aboutme-buttons,
+.coding-button,
+.coding-buttons {
+  display: flex;
+  justify-content: center;
+  border: none;
+  outline: none;
+  text-transform: uppercase;
+}
+
+.textArea {
+  width: 20em;
+  height: 5em;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.projects-form-buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.coding-form-buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.image-container {
+  text-align: center;
+  margin-top: 1em;
+}
+
+.big-profile-img {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  /* margin-right: 0px; */
+}
+
+.profile-sidebar-img {
+  width: "100px";
+  height: "100px";
+  border-radius: 12px;
+  /* margin: auto; */
+}

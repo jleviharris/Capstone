@@ -1,0 +1,49 @@
+li {
+  font-size: 1.25rem;
+  list-style: none;
+}
+
+.navBar {
+  display: flex;
+  justify-content: space-between;
+  background: rgb(51, 59, 65);
+  color: white;
+  margin-bottom: 2rem;
+  padding: 1.5rem 2rem;
+  flex-wrap: wrap;
+}
+
+.navBar ul {
+  display: flex;
+  padding: 1em;
+}
+
+.navBar ul li {
+  padding-right: 1em;
+}
+
+.navBar button {
+  background: rgb(51, 59, 65);
+  border: none;
+  color: white;
+  padding: 0.4rem 0.5rem;
+  padding: 0px 20px;
+}
+
+.navBar button:hover {
+  background: steelblue;
+  color: rgb(255, 255, 255);
+  cursor: pointer;
+  border-radius: 12px;
+}
+
+.navBar button:focus {
+  background: steelblue;
+  color: rgb(255, 255, 255);
+  border-radius: 12px;
+}
+
+.brand {
+  cursor: pointer;
+  font-size: 2rem;
+}

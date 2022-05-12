@@ -1,0 +1,28 @@
+/* .modal {
+  width: 60vw;
+  height: 30vh;
+  background-color: rgb(204, 210, 215);
+  border: 1px solid;
+  display: block;
+  z-index: 5;
+} */
+
+.textArea {
+  width: 90%;
+  height: 5rem;
+  font-size: medium;
+  justify-content: center;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.aboutme-form-buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
