@@ -26,7 +26,14 @@ const HomePage = () => {
   async function getAllPosts() {
     let posts = await AxiosPosts.getAllPosts();
     if (posts) {
-      setPostList(posts);
+      let newList = [];
+      for (let i = 0; i < posts.length; i++) { 
+        if (posts[i].spotPost.length === 0) {
+            newList.push(posts[i]);
+          }
+        }
+      setPostList(newList);
+    
     } else setPostList({ Object: "No Posts" });
   }
 

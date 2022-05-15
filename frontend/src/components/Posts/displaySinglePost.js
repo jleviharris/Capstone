@@ -2,8 +2,22 @@ import "../Posts/MyPost.css";
 
 import AxiosPosts from "../../Routes/postRoutes";
 import React from "react";
+import { useEffect } from "react";
 
-const DisplaySinglePost = ({ singlePost, setHidden, handleClick, userId }) => {
+const DisplaySinglePost = ({ singlePost, setHidden, handleClick, userId, setPostList, postList }) => {
+ 
+
+  useEffect(() => {
+    getPosts(userId);
+  }, []);
+
+  async function getPosts(spotId) {
+    let posts = await AxiosPosts.getAPostBySpotId(spotId);
+    if (posts) {
+      setPostList(posts);
+    } else setPostList({ Object: "No Posts" });
+  }
+
   async function deleteAPost(postId) {
     await AxiosPosts.deletePost(postId);
     setHidden(false);
@@ -12,6 +26,9 @@ const DisplaySinglePost = ({ singlePost, setHidden, handleClick, userId }) => {
     };
     click();
     return postId;
+  }
+  function setHiddenFalse(){
+    setHidden(false);
   }
 
   return (
@@ -29,6 +46,7 @@ const DisplaySinglePost = ({ singlePost, setHidden, handleClick, userId }) => {
       >
         Delete Post
       </button>
+      <button onClick={()=> {setHiddenFalse()}}>X</button>
     </div>
   );
 };

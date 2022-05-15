@@ -1,11 +1,9 @@
 import React, { useContext, useEffect, useState } from "react";
 import AuthContext from "../../context/AuthContext";
-import ErrorBoundary from "../ErrorBoundary";
-import AxiosSpots from "../../Routes/spotsRoutes";
-import DisplaySpots from "../../components/Spots/displaySpots";
-import DisplaySingleSpot from "../../components/Spots/displaySingleSpot";
 
-const SpotsPage = () => {
+
+
+const FriendsPage = () => {
   const [spotList, setSpotList] = useState([]);
   const { user } = useContext(AuthContext);
   const userId = user._id || null;

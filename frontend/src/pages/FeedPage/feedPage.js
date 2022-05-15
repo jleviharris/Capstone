@@ -27,7 +27,7 @@ const FeedPage = () => {
       let newList = [];
       for (let i = 0; i < posts.length; i++) {
         for (let j = 0; j < user.friendsList.length; j++) {
-          if (user.friendsList[j] === posts[i].userId) {
+          if (user.friendsList[j] === posts[i].userId && posts[i].spotPost.length > 0) {
             newList.push(posts[i]);
           }
         }

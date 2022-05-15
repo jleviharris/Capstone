@@ -1,7 +1,7 @@
 import React from "react";
 import CustomButtonSpots from "./CustomButtonSpots";
 
-const DisplaySpots = ({ spotList, setHidden, setSingleSpot, singleSpot }) => {
+const DisplaySpots = ({ spotList, setHidden, setSingleSpot }) => {
   function handleClick() {
     setHidden(true);
   }

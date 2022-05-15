@@ -17,10 +17,10 @@ const CustomButtonSpots = ({ singleSpot }) => {
    
     setNumOfLikes(singleSpot.likes.length);
     setNumOfDislikes(singleSpot.dislikes.length);
-    if (singleSpot.dislikes.includes(spotId)) {
+    if (singleSpot.dislikes.includes(userId)) {
       setButtonClass("likeButton");
       setButtonClass2("dislikeButtonActive");
-    } else if (singleSpot.likes.includes(spotId)) {
+    } else if (singleSpot.likes.includes(userId)) {
       setButtonClass("likeButtonActive");
       setButtonClass2("dislikeButton");
     } else {

@@ -7,7 +7,6 @@ import HomePage from "./pages/HomePage/HomePage";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import RegisterPage from "./pages/RegisterPage/RegisterPage";
 import MyPosts from "./pages/MyPosts/myPosts";
-// import SideBar from "./components/SideBar/SideBar";
 import FeedPage from "./pages/FeedPage/feedPage";
 import SpotsPage from "./pages/SpotsPage/SpotsPage";
 
@@ -23,7 +22,6 @@ function App() {
   return (
     <div>
       <Navbar />
-      {/* <SideBar /> */}
       <Routes>
         <Route
           path="/"
