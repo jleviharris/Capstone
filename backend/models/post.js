@@ -8,6 +8,8 @@ const postSchema = mongoose.Schema({
   likes: { type: Array, default: [] },
   dislikes: { type: Array, default: [] },
   dateAdded: { type: Date, default: Date.now() },
+  spotId: {type: String, default: "" },
+  spotPost: {type: String, default: ""}
 });
 
 const validatePost = (post) => {
@@ -15,6 +17,8 @@ const validatePost = (post) => {
     body: Joi.string().min(2).max(255).required(),
     userId: Joi.string().required(),
     name: Joi.string().required(),
+    spotId: Joi.string(),
+    spotPost: Joi.string(),
   });
   return schema.validate(post);
 };

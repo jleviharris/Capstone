@@ -1,7 +1,6 @@
 const mongoose = require("mongoose");
 const Joi = require("joi");
 const jwt = require("jsonwebtoken");
-// const { binary } = require("joi");
 
 const userSchema = mongoose.Schema({
   name: { type: String, required: true, minLength: 5, maxLength: 50 },
@@ -21,7 +20,6 @@ const userSchema = mongoose.Schema({
   stance: {type: String, default: "Regular"},
   dateAdded: { type: Date, default: Date.now() },
   skateStatus: {type: String, default: "Inactive"},
-  image: { type: String, default: "" },
 });
 
 userSchema.methods.generateAuthToken = function () {
@@ -37,12 +35,12 @@ userSchema.methods.generateAuthToken = function () {
       friendRequests: this.friendRequests,
       stance: this.stance,
       dateAdded: this.dateAdded,
-      image: this.image,
       skateStatus: this.skateStatus,
     },
     process.env.JWT_SECRET
   );
 };
+
 
 const validateUser = (user) => {
   const schema = Joi.object({
@@ -50,11 +48,6 @@ const validateUser = (user) => {
     email: Joi.string().min(5).max(255).required().email(),
     password: Joi.string().min(5).max(1024).required(),
     isAdmin: Joi.bool().required(),
-    image: Joi.string(),
-    aboutMe:Joi.string().min(4).max(1024),
-    stance: Joi.string(),
-    skateStatus: Joi.string(),
-    
   });
   return schema.validate(user);
 };
@@ -67,8 +60,21 @@ const validateLogin = (req) => {
   return schema.validate(req);
 };
 
-const User = mongoose.models.User || mongoose.model("User", userSchema);
+const User = mongoose.model("User", userSchema);
 module.exports.User = User;
 module.exports.userSchema = userSchema;
 module.exports.validateUser = validateUser;
 module.exports.validateLogin = validateLogin;
+
+
+
+
+
+
+
+
+
+
+
+
+

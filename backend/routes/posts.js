@@ -39,6 +39,17 @@ router.get("/:userId", async (req, res) => {
     return res.status(500).send(`Internal Server Error: ${error}`);
   }
 });
+// Get a post by spotId
+// http://localhost:3007/api/posts/:spotId
+router.get("/:spotId", async (req, res) => {
+  try {
+    const posts = await Post.find({ spotId: req.params.spotId });
+    if (!posts) return res.status(400).send(`No posts to show!`);
+    return res.send(posts);
+  } catch (error) {
+    return res.status(500).send(`Internal Server Error: ${error}`);
+  }
+});
 
 
 
