@@ -5,6 +5,7 @@ import AxiosPosts from "../../Routes/postRoutes";
 import AuthContext from "../../context/AuthContext";
 import ErrorBoundary from "../ErrorBoundary";
 import DisplaySinglePost from "../../components/Posts/displaySinglePost";
+import SetSkateStatus from "../../components/skateStatus";
 
 const HomePage = () => {
   const [postList, setPostList] = useState([]);
@@ -42,6 +43,7 @@ const HomePage = () => {
       <h1 className="container-0">Home Page for {user.name}!</h1>;
       {hidden === false && (
         <div>
+          <SetSkateStatus/>
           <CreatePost userId={userId} handleClick={handleClick} name={name} />
           <ErrorBoundary>
             <DisplayPosts
