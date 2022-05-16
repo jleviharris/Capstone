@@ -27,6 +27,36 @@ async function updateUser(userId, body) {
       console.log("Error getting user: " + error);
     }
   }
+  async function getAllUsers(){
+    try {
+      let response = await axios.get (`${baseUrl}/`)
+      if (response) {
+        return response.data;
+      }
+    } catch (error) {
+      console.log("Error getting user: " + error);
+    }
+  }
+  async function getAllFriends(userId){
+    try {
+      let response = await axios.get (`${baseUrl}/currentFriends/${userId}`)
+      if (response) {
+        return response.data;
+      }
+    } catch (error) {
+      console.log("Error getting user: " + error);
+    }
+  }
+  async function getAllFriendRequests(userId){
+    try {
+      let response = await axios.get (`${baseUrl}/friendRequests/${userId}`)
+      if (response) {
+        return response.data;
+      }
+    } catch (error) {
+      console.log("Error getting user: " + error);
+    }
+  }
 
-  const AxiosUsers = {getUser, updateUser}
+  const AxiosUsers = {getUser, updateUser, getAllUsers, getAllFriends, getAllFriendRequests}
   export default AxiosUsers;

@@ -1,30 +1,52 @@
 import React, { useContext, useEffect, useState } from "react";
 import AuthContext from "../../context/AuthContext";
+import AxiosUsers from "../../Routes/userRoutes";
+import DisplayUsers from "../../components/Friends/displayUsers";
+import DisplaySingleUser from "../../components/Friends/displaySingleUser";
+import ErrorBoundary from "../ErrorBoundary";
+import DisplayCurrentFriends from "../../components/Friends/displayCurrentFriends";
+import DisplayFriendRequests from "../../components/Friends/displayFriendRequests";
 
 
 
 const FriendsPage = () => {
-  const [spotList, setSpotList] = useState([]);
+  
   const { user } = useContext(AuthContext);
   const userId = user._id || null;
   const [update, setUpdate] = useState(false);
   const [hidden, setHidden] = useState(false);
-  const [singleSpot, setSingleSpot] = useState();
-  const [postList, setPostList] = useState([]);
+  const [userList, setUserList] = useState([]);
+  const [singleUser, setSingleUser] = useState();
+  const [userFriendsList, setUserFriendsList]= useState([]);
+  const [userFriendRequestList, setUserFriendRequestList]= useState([]);
 
   useEffect(() => {
-    getAllSpots();
+    getAllUsers();
+    getCurrentFriends();
+    getFriendRequests();
   }, [update]);
 
   function handleClick() {
     setUpdate(!update);
   }
 
-  async function getAllSpots() {
-    let spots = await AxiosSpots.getAllSpots();
-    if (spots) {
-      setSpotList(spots);
-    } else setSpotList({ Object: "No Spots" });
+  async function getAllUsers() {
+    let users = await AxiosUsers.getAllUsers();
+    if (users) {
+      setUserList(users);
+    } else setUserList({ Object: "No Users" });
+  }
+  async function getCurrentFriends() {
+    let users = await AxiosUsers.getAllFriends(userId);
+    if (users) {
+      setUserFriendsList(users);
+    } else setUserFriendsList({ Object: "No Users" });
+  }
+  async function getFriendRequests() {
+    let users = await AxiosUsers.getAllFriendRequests(userId);
+    if (users) {
+      setUserFriendRequestList(users);
+    } else setUserFriendRequestList({ Object: "No Users" });
   }
 
   return (
@@ -32,27 +54,35 @@ const FriendsPage = () => {
       {hidden === false && (
         <div>
           <ErrorBoundary>
-            <DisplaySpots
-              spotList={spotList}
+            <DisplayCurrentFriends userFriendsList={userFriendsList}
               setHidden={setHidden}
-              setSingleSpot={setSingleSpot}
+              setSingleUser={setSingleUser}/>
+            <DisplayUsers
+              userList={userList}
+              setHidden={setHidden}
+              setSingleUser={setSingleUser}
+            />
+            <DisplayFriendRequests
+              userFriendRequestList={userFriendRequestList}
+              setHidden={setHidden}
+              setSingleUser={setSingleUser}
             />
           </ErrorBoundary>
         </div>
       )}
       {hidden && (
-        <DisplaySingleSpot
-          singleSpot={singleSpot}
+        <DisplaySingleUser
+          singleUser={singleUser}
           setHidden={setHidden}
           handleClick={handleClick}
           userId={userId}
-          singleSpot={singleSpot}
-          setPostList={setPostList}
-          postList={postList}
+          singleUser={singleUser}
+          setUserList={setUserList}
+          userList={userList}
         />
       )}
     </div>
   );
 };
 
-export default SpotsPage;
+export default FriendsPage;

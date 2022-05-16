@@ -44,6 +44,11 @@ const Navbar = () => {
           )}
         </li>
         <li>
+          {user && (
+            <button onClick={() => navigate("/friendsPage")}>Friends</button>
+          )}
+        </li>
+        <li>
           {user ? (
             <button onClick={logoutUser}>Logout</button>
           ) : (

@@ -9,6 +9,7 @@ import RegisterPage from "./pages/RegisterPage/RegisterPage";
 import MyPosts from "./pages/MyPosts/myPosts";
 import FeedPage from "./pages/FeedPage/feedPage";
 import SpotsPage from "./pages/SpotsPage/SpotsPage";
+import FriendsPage from "./pages/Friends/friendsPage";
 
 // Component Imports
 import Navbar from "./components/NavBar/NavBar";
@@ -37,6 +38,7 @@ function App() {
         <Route path="/myPosts" element={<MyPosts />} />
         <Route path="/profile" element={<ProfilePage />} />
         <Route path="/feedPage" element={<FeedPage />} />
+        <Route path="/friendsPage" element={<FriendsPage />} />
       </Routes>
       <Footer />
     </div>
