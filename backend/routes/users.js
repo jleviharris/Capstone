@@ -68,7 +68,7 @@ router.post("/login", async (req, res) => {
 });
 
 // Get all users
-router.get("/", [auth], async (req, res) => {
+router.get("/", async (req, res) => {
   try {
     const users = await User.find();
     return res.send(users);
@@ -92,19 +92,45 @@ router.delete("/:userId", [auth, admin], async (req, res) => {
   }
 });
 
-// Get property of user
-// router.get("/:userId", async (req, res) => {
-//   try {
-//     const users = await User.findById(req.params.userId);
-//     if (users) {
-//       return res.send(users);
-//     } else {
-//       return res.status(400).send("Error getting user");
-//     }
-//   } catch (error) {
-//     return res.status(500).send(`Internal Server Error: ${error}`);
-//   }
-// });
+// Get current friends of user
+router.get("/currentFriends/:userId", async (req, res) => {
+  try {
+    const user = await User.findById(req.params.userId);
+    if (user) {
+      return res.send(user.friendsList);
+    } else {
+      return res.status(400).send("Error getting friends");
+    }
+  } catch (error) {
+    return res.status(500).send(`Internal Server Error: ${error}`);
+  }
+});
+// Get friend requests of user
+router.get("/friendRequests/:userId", async (req, res) => {
+  try {
+    const user = await User.findById(req.params.userId);
+    if (user) {
+      return res.send(user.friendRequests);
+    } else {
+      return res.status(400).send("Error getting friends");
+    }
+  } catch (error) {
+    return res.status(500).send(`Internal Server Error: ${error}`);
+  }
+});
+// Get user by userId
+router.get("/:userId", async (req, res) => {
+  try {
+    const user = await User.findById(req.params.userId);
+    if (user) {
+      return res.send(user);
+    } else {
+      return res.status(400).send("Error getting user");
+    }
+  } catch (error) {
+    return res.status(500).send(`Internal Server Error: ${error}`);
+  }
+});
 
 // Update property of user
 router.put("/update", async (req, res) => {
