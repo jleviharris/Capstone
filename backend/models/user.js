@@ -3,7 +3,7 @@ const Joi = require("joi");
 const jwt = require("jsonwebtoken");
 
 const userSchema = mongoose.Schema({
-  name: { type: String, required: true, minLength: 5, maxLength: 50 },
+  name: { type: String, required: true, minLength: 2, maxLength: 50 },
   email: {
     type: String,
     unique: true,
@@ -17,9 +17,9 @@ const userSchema = mongoose.Schema({
   friendsList: { type: Array, default: [] },
   pendingFriends: { type: Array, default: [] },
   friendRequests: { type: Array, default: [] },
-  stance: {type: String, default: "Regular"},
+  stance: { type: String, default: "Regular" },
   dateAdded: { type: Date, default: Date.now() },
-  skateStatus: {type: String, default: "Inactive"},
+  skateStatus: { type: String, default: "Inactive" },
 });
 
 userSchema.methods.generateAuthToken = function () {
@@ -41,10 +41,9 @@ userSchema.methods.generateAuthToken = function () {
   );
 };
 
-
 const validateUser = (user) => {
   const schema = Joi.object({
-    name: Joi.string().min(5).max(50).required(),
+    name: Joi.string().min(2).max(50).required(),
     email: Joi.string().min(5).max(255).required().email(),
     password: Joi.string().min(5).max(1024).required(),
     isAdmin: Joi.bool().required(),
@@ -65,16 +64,3 @@ module.exports.User = User;
 module.exports.userSchema = userSchema;
 module.exports.validateUser = validateUser;
 module.exports.validateLogin = validateLogin;
-
-
-
-
-
-
-
-
-
-
-
-
-

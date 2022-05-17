@@ -7,8 +7,6 @@ const bcrypt = require("bcrypt");
 const express = require("express");
 const router = express.Router();
 
-
-
 //* POST register a new user
 router.post("/register", async (req, res) => {
   try {
@@ -118,6 +116,19 @@ router.get("/friendRequests/:userId", async (req, res) => {
     return res.status(500).send(`Internal Server Error: ${error}`);
   }
 });
+// Get sent friend requests of user
+router.get("/sentFriendRequests/:userId", async (req, res) => {
+  try {
+    const user = await User.findById(req.params.userId);
+    if (user) {
+      return res.send(user.pendingFriends);
+    } else {
+      return res.status(400).send("Error getting friends");
+    }
+  } catch (error) {
+    return res.status(500).send(`Internal Server Error: ${error}`);
+  }
+});
 // Get user by userId
 router.get("/:userId", async (req, res) => {
   try {
@@ -146,18 +157,96 @@ router.put("/update", async (req, res) => {
     return res.status(500).send(`Internal Server Error: ${error}`);
   }
 });
-// router.put("/updateImage/:userId", fileUpload.single('image'),async (req, res) => {
-//   try {
-//     const users = await User.findByIdAndUpdate(
-//       { _id: req.params.userId },
-//       {image: req.file.filename},
-//       { new: true }
-//     );
 
-//     return res.status(200).send(users);
-//   } catch (error) {
-//     return res.status(500).send(`Internal Server Error: ${error}`);
-//   }
-// });
+// Add user to friendRequest list of a chosen user
+// http://localhost:3007/api/users/friendRequests/:userId
+router.put("/friendRequests/:userId", async (req, res) => {
+  try {
+    const user = await User.updateOne(
+      { _id: req.params.userId },
+      { $addToSet: { friendRequests: req.body.friendRequests } },
+      { new: true }
+    );
+    if (!user) return res.status(400).send(`No user to show!`);
+    return res.send(user.friendRequests);
+  } catch (error) {
+    return res.status(500).send(`Internal Server Error: ${error}`);
+  }
+});
+// after sending friend request, add the new pending friend into the pendingFriends list
+// http://localhost:3007/api/users/addToPendingFriends/:userId
+router.put("/addToPendingFriends/:userId", async (req, res) => {
+  try {
+    const user = await User.updateOne(
+      { _id: req.params.userId },
+      { $addToSet: { pendingFriends: req.body.pendingFriends } },
+      { new: true }
+    );
+    if (!user) return res.status(400).send(`No user to show!`);
+    return res.send(user.pendingFriends);
+  } catch (error) {
+    return res.status(500).send(`Internal Server Error: ${error}`);
+  }
+});
+// after accepting friend request, remove the new user from the original users pendingFriends list
+// http://localhost:3007/api/users/removeFromPendingFriends/:userId
+router.put("/removeFromPendingFriends/:userId", async (req, res) => {
+  try {
+    const user = await User.updateOne(
+      { _id: req.params.userId },
+      { $pull: { pendingFriends: req.body.pendingFriends } },
+      { new: true }
+    );
+    if (!user) return res.status(400).send(`No user to show!`);
+    return res.send(user.pendingFriends);
+  } catch (error) {
+    return res.status(500).send(`Internal Server Error: ${error}`);
+  }
+});
+// after accepting friend request, remove the new friend from the friendsRequest
+// http://localhost:3007/api/users/removeFromFriendRequests/:userId
+router.put("/removeFromFriendRequests/:userId", async (req, res) => {
+  try {
+    const user = await User.updateOne(
+      { _id: req.params.userId },
+      { $pull: { friendRequests: req.body.friendRequests } },
+      { new: true }
+    );
+    if (!user) return res.status(400).send(`No user to show!`);
+    return res.send(user.pendingFriends);
+  } catch (error) {
+    return res.status(500).send(`Internal Server Error: ${error}`);
+  }
+});
+// remove friend from the friendsList
+// http://localhost:3007/api/users/removeFriend/:userId
+router.put("/removeFriend/:userId", async (req, res) => {
+  try {
+    const user = await User.updateOne(
+      { _id: req.params.userId },
+      { $pull: { friendsList: req.body.friendsList } },
+      { new: true }
+    );
+    if (!user) return res.status(400).send(`No user to show!`);
+    return res.send(user.friendsList);
+  } catch (error) {
+    return res.status(500).send(`Internal Server Error: ${error}`);
+  }
+});
+// Accept friend request
+// http://localhost:3007/api/users/acceptFriendRequests/:userId
+router.put("/acceptFriendRequests/:userId", async (req, res) => {
+  try {
+    const user = await User.updateOne(
+      { _id: req.params.userId },
+      { $addToSet: { friendsList: req.body.friendsList } },
+      { new: true }
+    );
+    if (!user) return res.status(400).send(`No user to show!`);
+    return res.send(user.friendsList);
+  } catch (error) {
+    return res.status(500).send(`Internal Server Error: ${error}`);
+  }
+});
 
 module.exports = router;
