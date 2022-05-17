@@ -35,7 +35,7 @@ const DisplaySingleUser = ({ singleUser, setHidden, handleClick, userId, setUser
 
   return (
     <div className="delete-post">
-      {singleUser && singleUser.name} <br />
+      {singleUser.name} <br />
       <button onClick={()=> {sendFriendRequest()}}>Send friend request</button>
       <button onClick={()=> {setHiddenFalse()}}>X</button>
     </div>

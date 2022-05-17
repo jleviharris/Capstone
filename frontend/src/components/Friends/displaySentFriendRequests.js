@@ -2,18 +2,12 @@ import "../Posts/MyPost.css";
 import AxiosUsers from "../../Routes/userRoutes";
 import React, { useState } from "react";
 
-const DisplayCurrentFriends = ({
-  userFriendsList,
+const DisplaySentFriendRequests = ({
+  userSentFriendRequestList,
   setHidden,
   setSingleUser,
-  userId,
 }) => {
   const [usersFriend, setUsersFriend] = useState("");
-
-  async function removeFriend(userId, obj) {
-    await AxiosUsers.removeFriend(userId, obj);
-  }
-
   function handleClick() {
     setHidden(true);
   }
@@ -26,33 +20,21 @@ const DisplayCurrentFriends = ({
   }
   return (
     <div className="postlist">
-      <div>Friends</div>
-      {userFriendsList
-        .map((theUser, index) => {
-          getFriendById(theUser);
+      <div>Pending Friends</div>
+      {userSentFriendRequestList
+        .map((user, index) => {
+          getFriendById(user);
           return (
             <div key={index} className="postbody">
               <button
                 className="my-post-button"
                 onClick={() => {
-                  handleClick(theUser);
-                  setSingleUser(theUser);
+                  handleClick(user);
+                  setSingleUser(user);
                 }}
               >
                 {" "}
                 <div className="name-container">{usersFriend}</div>
-              </button>
-              <button
-                onClick={() => {
-                  //logged in user "userId"
-                  // logged out user "theUser"
-                  removeFriend(userId, { friendsList: theUser });
-                  removeFriend(theUser, { friendsList: userId });
-
-                  console.log(theUser);
-                }}
-              >
-                Unfollow
               </button>
             </div>
           );
@@ -62,4 +44,4 @@ const DisplayCurrentFriends = ({
   );
 };
 
-export default DisplayCurrentFriends;
+export default DisplaySentFriendRequests;

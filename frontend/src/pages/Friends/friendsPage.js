@@ -6,24 +6,27 @@ import DisplaySingleUser from "../../components/Friends/displaySingleUser";
 import ErrorBoundary from "../ErrorBoundary";
 import DisplayCurrentFriends from "../../components/Friends/displayCurrentFriends";
 import DisplayFriendRequests from "../../components/Friends/displayFriendRequests";
-
-
+import DisplaySentFriendRequests from "../../components/Friends/displaySentFriendRequests";
 
 const FriendsPage = () => {
-  
   const { user } = useContext(AuthContext);
   const userId = user._id || null;
   const [update, setUpdate] = useState(false);
   const [hidden, setHidden] = useState(false);
   const [userList, setUserList] = useState([]);
   const [singleUser, setSingleUser] = useState();
-  const [userFriendsList, setUserFriendsList]= useState([]);
-  const [userFriendRequestList, setUserFriendRequestList]= useState([]);
+  const [userFriendsList, setUserFriendsList] = useState([]);
+  const [usersFriendRequest, setUsersFriendRequest] = useState("");
+  const [userFriendRequestList, setUserFriendRequestList] = useState([]);
+  const [userSentFriendRequestList, setUserSentFriendRequestList] = useState(
+    []
+  );
 
   useEffect(() => {
     getAllUsers();
     getCurrentFriends();
     getFriendRequests();
+    getSentFriendRequests();
   }, [update]);
 
   function handleClick() {
@@ -48,22 +51,40 @@ const FriendsPage = () => {
       setUserFriendRequestList(users);
     } else setUserFriendRequestList({ Object: "No Users" });
   }
+  async function getSentFriendRequests() {
+    let users = await AxiosUsers.getAllSentFriendRequests(userId);
+    if (users) {
+      setUserSentFriendRequestList(users);
+    } else setUserSentFriendRequestList({ Object: "No Users" });
+  }
 
   return (
     <div>
       {hidden === false && (
         <div>
           <ErrorBoundary>
-            <DisplayCurrentFriends userFriendsList={userFriendsList}
+            <DisplayCurrentFriends
+              userFriendsList={userFriendsList}
               setHidden={setHidden}
-              setSingleUser={setSingleUser}/>
+              setSingleUser={setSingleUser}
+              userId={userId}
+            />
             <DisplayUsers
               userList={userList}
               setHidden={setHidden}
               setSingleUser={setSingleUser}
+              userId={userId}
             />
             <DisplayFriendRequests
               userFriendRequestList={userFriendRequestList}
+              setHidden={setHidden}
+              setSingleUser={setSingleUser}
+              userId={userId}
+              usersFriendRequest={usersFriendRequest}
+              setUsersFriendRequest={setUsersFriendRequest}
+            />
+            <DisplaySentFriendRequests
+              userSentFriendRequestList={userSentFriendRequestList}
               setHidden={setHidden}
               setSingleUser={setSingleUser}
             />

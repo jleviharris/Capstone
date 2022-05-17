@@ -1,8 +1,20 @@
 import "../Posts/MyPost.css";
 
 import React from "react";
+import AxiosUsers from "../../Routes/userRoutes";
 
-const DisplayUsers = ({ userList, setHidden, setSingleUser }) => {
+const DisplayUsers = ({ userList, setHidden, setSingleUser, userId }) => {
+  async function sendFriendRequest(userId, obj) {
+    await AxiosUsers.updateUsersFriendRequests(userId, obj);
+    console.log(userId);
+    console.log(obj);
+  }
+  async function addToPendingFriends(userId, obj) {
+    await AxiosUsers.addToPendingFriends(userId, obj);
+    console.log(userId);
+    console.log(obj);
+  }
+
   function handleClick() {
     setHidden(true);
   }
@@ -25,7 +37,16 @@ const DisplayUsers = ({ userList, setHidden, setSingleUser }) => {
                 <div className="name-container">{user.name}</div>
               </button>
 
-          
+              <button
+                onClick={() => {
+                  // The user logged in "userId"
+                  // The user being sent a friend request "user._id"
+                  sendFriendRequest(user._id, { friendRequests: userId });
+                  addToPendingFriends(userId, { pendingFriends: user._id });
+                }}
+              >
+                Send Request
+              </button>
             </div>
           );
         })
