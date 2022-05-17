@@ -36,9 +36,16 @@ const FriendsPage = () => {
   async function getAllUsers() {
     let users = await AxiosUsers.getAllUsers();
     if (users) {
-      setUserList(users);
+      let newList = [];
+      for (let i = 0; i < users.length; i++) {
+        if (users[i]._id !== userId) {
+          newList.push(users[i]);
+        }
+      }
+      setUserList(newList);
     } else setUserList({ Object: "No Users" });
   }
+
   async function getCurrentFriends() {
     let users = await AxiosUsers.getAllFriends(userId);
     if (users) {
@@ -68,6 +75,7 @@ const FriendsPage = () => {
               setHidden={setHidden}
               setSingleUser={setSingleUser}
               userId={userId}
+              setUserList={setUserList}
             />
             <DisplayUsers
               userList={userList}
