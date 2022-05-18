@@ -39,7 +39,6 @@ const DisplayFriendRequests = ({
       newList.push(newObj);
     }
     setFriendObjList(newList);
-    console.log(friendObjList);
   }
   return (
     <div className="postlist">

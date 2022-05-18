@@ -17,8 +17,14 @@ const SetSkateStatus = ({
   // const [skateInactive, setSkateInactive] = useState("");
   // const { user } = useContext(AuthContext);
   // const userId = user._id || null;
+  // console.log(user.skateStatus);
+  // console.log(user);
 
   useEffect(() => {
+    setButtons();
+  }, []);
+
+  async function setButtons() {
     if (user.skateStatus === "Active") {
       setSkateActive("activeOn");
       setSkateInactive("inactiveOff");
@@ -26,7 +32,7 @@ const SetSkateStatus = ({
       setSkateActive("activeOff");
       setSkateInactive("inactiveOn");
     }
-  }, []);
+  }
 
   async function setUsersSkateStatus(userId, obj) {
     await AxiosSkateStatus.updateSkateStatus(userId, obj);

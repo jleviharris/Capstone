@@ -37,7 +37,6 @@ const DisplayCurrentFriends = ({
     }
     setFriendObjList(newList);
   }
-  console.log(friendObjList);
   return (
     <div className="postlist">
       <div>Your Friends</div>

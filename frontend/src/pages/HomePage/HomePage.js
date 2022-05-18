@@ -25,7 +25,7 @@ const HomePage = () => {
   function handleClick() {
     setUpdate(!update);
   }
-
+  console.log(user);
   async function getAllPosts() {
     let posts = await AxiosPosts.getAllPosts();
     if (posts) {

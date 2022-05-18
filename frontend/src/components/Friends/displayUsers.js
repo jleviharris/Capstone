@@ -67,14 +67,11 @@ const DisplayUsers = ({
       if (userId !== users[i]._id) {
         if (!allLists.includes(users[i]._id)) {
           newList.push(users[i]);
-          console.log(users[i]);
         }
       }
     }
 
-    console.log(newList);
     setUpdatedUsers(newList);
-    console.log(updatedUsers);
   }
 
   function handleClickHidden() {
