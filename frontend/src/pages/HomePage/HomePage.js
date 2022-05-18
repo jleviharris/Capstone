@@ -15,6 +15,8 @@ const HomePage = () => {
   const [hidden, setHidden] = useState(false);
   const [singlePost, setSinglePost] = useState();
   const name = user.name || null;
+  const [skateActive, setSkateActive] = useState("");
+  const [skateInactive, setSkateInactive] = useState("");
 
   useEffect(() => {
     getAllPosts();
@@ -28,13 +30,12 @@ const HomePage = () => {
     let posts = await AxiosPosts.getAllPosts();
     if (posts) {
       let newList = [];
-      for (let i = 0; i < posts.length; i++) { 
+      for (let i = 0; i < posts.length; i++) {
         if (posts[i].spotPost.length === 0) {
-            newList.push(posts[i]);
-          }
+          newList.push(posts[i]);
         }
+      }
       setPostList(newList);
-    
     } else setPostList({ Object: "No Posts" });
   }
 
@@ -43,7 +44,14 @@ const HomePage = () => {
       <h1 className="container-0">Home Page for {user.name}!</h1>;
       {hidden === false && (
         <div>
-          <SetSkateStatus/>
+          <SetSkateStatus
+            user={user}
+            userId={userId}
+            skateInactive={skateInactive}
+            setSkateInactive={setSkateInactive}
+            skateActive={skateActive}
+            setSkateActive={setSkateActive}
+          />
           <CreatePost userId={userId} handleClick={handleClick} name={name} />
           <ErrorBoundary>
             <DisplayPosts

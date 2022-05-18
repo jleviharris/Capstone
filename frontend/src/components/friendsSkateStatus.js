@@ -1,10 +1,10 @@
 import "../components/Posts/MyPost.css";
 
 import React, { useState, useContext, useEffect } from "react";
-import AxiosUsers from "../Routes/userRoutes";
-import AuthContext from "../context/AuthContext";
+// import AxiosUsers from "../Routes/userRoutes";
+// import AuthContext from "../context/AuthContext";
 
-const SetSkateStatus = ({
+const FriendsSkateStatus = ({
   user,
   userId,
   skateInactive,
@@ -84,4 +84,4 @@ const SetSkateStatus = ({
     </div>
   );
 };
-export default SetSkateStatus;
+export default FriendsSkateStatus;

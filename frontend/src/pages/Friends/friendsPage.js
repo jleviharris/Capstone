@@ -36,25 +36,7 @@ const FriendsPage = () => {
   async function getAllUsers() {
     let users = await AxiosUsers.getAllUsers();
     if (users) {
-      let newList = [];
-      let finalList = [];
-      for (let i = 0; i < users.length; i++) {
-        console.log(users[i]._id);
-        if (users[i]._id !== userId) {
-          newList.push(users[i]);
-        }
-      }
-      for (let j = 0; j < newList.length; j++) {
-        console.log(newList[j]._id);
-        for (let k = 0; k < user.friendsList.length; k++) {
-          console.log(user.friendsList[k]);
-          if (newList[j]._id !== user.friendsList[k]) {
-            finalList.push(newList[j]);
-          }
-        }
-      }
-      setUserList(finalList);
-      console.log(user);
+      setUserList(users);
     } else setUserList({ Object: "No Users" });
   }
 
@@ -88,12 +70,18 @@ const FriendsPage = () => {
               setSingleUser={setSingleUser}
               userId={userId}
               setUserList={setUserList}
+              handleClick={handleClick}
+              update={update}
             />
             <DisplayUsers
               userList={userList}
               setHidden={setHidden}
               setSingleUser={setSingleUser}
               userId={userId}
+              handleClick={handleClick}
+              userFriendRequestList={userFriendRequestList}
+              userSentFriendRequestList={userSentFriendRequestList}
+              userFriendsList={userFriendsList}
             />
             <DisplayFriendRequests
               userFriendRequestList={userFriendRequestList}
@@ -102,11 +90,13 @@ const FriendsPage = () => {
               userId={userId}
               usersFriendRequest={usersFriendRequest}
               setUsersFriendRequest={setUsersFriendRequest}
+              handleClick={handleClick}
             />
             <DisplaySentFriendRequests
               userSentFriendRequestList={userSentFriendRequestList}
               setHidden={setHidden}
               setSingleUser={setSingleUser}
+              handleClick={handleClick}
             />
           </ErrorBoundary>
         </div>
