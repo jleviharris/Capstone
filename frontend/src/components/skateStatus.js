@@ -3,6 +3,7 @@ import "../components/Posts/MyPost.css";
 import React, { useState, useContext, useEffect } from "react";
 import AxiosUsers from "../Routes/userRoutes";
 import AuthContext from "../context/AuthContext";
+import AxiosSkateStatus from "../Routes/skateStatusRoutes";
 
 const SetSkateStatus = ({
   user,
@@ -27,34 +28,28 @@ const SetSkateStatus = ({
     }
   }, []);
 
+  async function setUsersSkateStatus(userId, obj) {
+    await AxiosSkateStatus.updateSkateStatus(userId, obj);
+  }
   function handleClick(event) {
-    //   async function setSkateStatusActive(userId, body) {
-    //     await AxiosUsers.updateUser(userId, body);
-    //     return body;
-    //   }
-    //   async function setSkateStatusInactive(userId, body) {
-    //     await AxiosUsers.updateUser(userId, body);
-    //     return body;
-    //   }
-
     if (event.target.id === "active") {
       if (skateActive === "activeOn") {
         setSkateActive("activeOff");
-        //  setSkateStatusInactive();
+        setUsersSkateStatus(userId, { skateStatus: "Inactive" });
         setSkateInactive("inactiveOn");
       } else if (skateActive === "activeOff") {
         setSkateActive("activeOn");
-        // setSkateStatusActive();
+        setUsersSkateStatus(userId, { skateStatus: "Active" });
         setSkateInactive("inactiveOff");
       }
     } else if (event.target.id === "inactive") {
       if (skateInactive === "inactiveOn") {
         setSkateInactive("inactiveOff");
-        //  setSkateStatusActive();
+        setUsersSkateStatus(userId, { skateStatus: "Active" });
         setSkateActive("activeOn");
       } else if (skateInactive === "inactiveOff") {
         setSkateInactive("inactiveOn");
-        // setSkateStatusInactive();
+        setUsersSkateStatus(userId, { skateStatus: "Inactive" });
         setSkateActive("activeOff");
       }
     }
