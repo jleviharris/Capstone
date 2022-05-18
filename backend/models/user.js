@@ -13,13 +13,14 @@ const userSchema = mongoose.Schema({
   },
   password: { type: String, required: true, minLength: 8, maxLength: 1024 },
   isAdmin: { type: Boolean, required: true },
-  aboutMe: { type: String, minLength: 4, maxLength: 1024, default: "     " },
+  aboutMe: { type: String, minLength: 2, maxLength: 1024, default: " N/A " },
   friendsList: { type: Array, default: [] },
   pendingFriends: { type: Array, default: [] },
   friendRequests: { type: Array, default: [] },
   stance: { type: String, default: "Regular" },
   dateAdded: { type: Date, default: Date.now() },
   skateStatus: { type: String, default: "Inactive" },
+  currentPark: { type: Array, default: [] },
 });
 
 userSchema.methods.generateAuthToken = function () {
@@ -36,6 +37,7 @@ userSchema.methods.generateAuthToken = function () {
       stance: this.stance,
       dateAdded: this.dateAdded,
       skateStatus: this.skateStatus,
+      currentPark: this.currentPark,
     },
     process.env.JWT_SECRET
   );

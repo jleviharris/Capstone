@@ -28,7 +28,19 @@ router.get("/", async (req, res) => {
     return res.status(500).send(`Internal Server Error: ${error}`);
   }
 });
-
+// Get spot by spotId
+router.get("/:spotId", async (req, res) => {
+  try {
+    const spot = await Spot.findById(req.params.spotId);
+    if (spot) {
+      return res.send(spot);
+    } else {
+      return res.status(400).send("Error getting spot");
+    }
+  } catch (error) {
+    return res.status(500).send(`Internal Server Error: ${error}`);
+  }
+});
 
 // PUT an existing spot
 // http://localhost:3007/api/spots/:spotId
@@ -41,7 +53,6 @@ router.get("/", async (req, res) => {
 //     return res.status(500).send(`Internal Server Error: ${error}`);
 //   }
 // });
-
 
 // PUT an existing spot add like
 // http://localhost:3007/api/spot/like/:postId
