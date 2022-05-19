@@ -6,6 +6,7 @@ import AuthContext from "../../context/AuthContext";
 import ErrorBoundary from "../ErrorBoundary";
 import DisplaySinglePost from "../../components/Posts/displaySinglePost";
 import SetSkateStatus from "../../components/skateStatus";
+import AxiosUsers from "../../Routes/userRoutes";
 
 const HomePage = () => {
   const [postList, setPostList] = useState([]);
@@ -17,15 +18,23 @@ const HomePage = () => {
   const name = user.name || null;
   const [skateActive, setSkateActive] = useState("");
   const [skateInactive, setSkateInactive] = useState("");
+  const [freshUser, setFreshUser] = useState();
 
   useEffect(() => {
     getAllPosts();
+    setUser(userId);
   }, [update]);
 
   function handleClick() {
     setUpdate(!update);
   }
-  console.log(user);
+  console.log(freshUser);
+
+  async function setUser(userId) {
+    let tempUser = await AxiosUsers.getUser(userId);
+    setFreshUser(tempUser);
+  }
+
   async function getAllPosts() {
     let posts = await AxiosPosts.getAllPosts();
     if (posts) {
@@ -51,6 +60,8 @@ const HomePage = () => {
             setSkateInactive={setSkateInactive}
             skateActive={skateActive}
             setSkateActive={setSkateActive}
+            freshUser={freshUser}
+            setFreshUser={setFreshUser}
           />
           <CreatePost userId={userId} handleClick={handleClick} name={name} />
           <ErrorBoundary>

@@ -19,6 +19,7 @@ import Footer from "./components/Footer/Footer";
 import PrivateRoute from "./utils/PrivateRoute";
 import ProfilePage from "./pages/ProfilePage/ProfilePage";
 
+
 function App() {
   return (
     <div>

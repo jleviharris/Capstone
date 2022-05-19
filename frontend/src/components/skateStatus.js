@@ -12,6 +12,7 @@ const SetSkateStatus = ({
   setSkateInactive,
   skateActive,
   setSkateActive,
+  freshUser,
 }) => {
   // const [skateActive, setSkateActive] = useState("");
   // const [skateInactive, setSkateInactive] = useState("");
@@ -22,13 +23,13 @@ const SetSkateStatus = ({
 
   useEffect(() => {
     setButtons();
-  }, []);
+  }, [freshUser]);
 
   async function setButtons() {
-    if (user.skateStatus === "Active") {
+    if (freshUser.skateStatus === "Active") {
       setSkateActive("activeOn");
       setSkateInactive("inactiveOff");
-    } else if (user.skateStatus === "Inactive") {
+    } else if (freshUser.skateStatus === "Inactive") {
       setSkateActive("activeOff");
       setSkateInactive("inactiveOn");
     }
