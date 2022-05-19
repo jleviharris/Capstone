@@ -19,7 +19,7 @@ const userSchema = mongoose.Schema({
   friendRequests: { type: Array, default: [] },
   stance: { type: String, default: "Regular" },
   dateAdded: { type: Date, default: Date.now() },
-  skateStatus: { type: String, default: "Inactive" },
+  skateStatus: { type: String, default: "" },
   currentPark: { type: Array, default: [] },
 });
 
