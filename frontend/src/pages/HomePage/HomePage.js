@@ -28,7 +28,6 @@ const HomePage = () => {
   function handleClick() {
     setUpdate(!update);
   }
-  console.log(freshUser);
 
   async function setUser(userId) {
     let tempUser = await AxiosUsers.getUser(userId);
