@@ -79,7 +79,7 @@ const CustomButton = ({ post }) => {
     }
   }
   return (
-    <div>
+    <div className="likeAndDislike">
       <button
         className={buttonClass}
         onClick={(event) => {

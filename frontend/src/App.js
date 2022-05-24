@@ -19,7 +19,6 @@ import Footer from "./components/Footer/Footer";
 import PrivateRoute from "./utils/PrivateRoute";
 import ProfilePage from "./pages/ProfilePage/ProfilePage";
 
-
 function App() {
   return (
     <div>
@@ -29,7 +28,7 @@ function App() {
           path="/"
           element={
             <PrivateRoute>
-              <HomePage />
+              <SpotsPage />
             </PrivateRoute>
           }
         />
@@ -41,7 +40,6 @@ function App() {
         <Route path="/feedPage" element={<FeedPage />} />
         <Route path="/friendsPage" element={<FriendsPage />} />
       </Routes>
-      <Footer />
     </div>
   );
 }

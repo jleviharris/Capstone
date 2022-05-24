@@ -34,7 +34,7 @@ const MyPosts = () => {
     <div>
       {hidden === false && (
         <div>
-          <CreatePost userId={userId} handleClick={handleClick} name={name} />
+          {/* <CreatePost userId={userId} handleClick={handleClick} name={name} /> */}
           <ErrorBoundary>
             <DisplayPosts
               postList={postList}

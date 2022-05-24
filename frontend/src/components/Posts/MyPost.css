@@ -9,7 +9,6 @@
 }
 
 textarea {
-  width: 50em;
   height: 7em;
 }
 
@@ -22,21 +21,67 @@ textarea {
 
 .postlist {
   display: flex;
-  border: 1px black solid;
+
   flex-direction: column;
   border-radius: 7px;
-  width: 70%;
+  width: 95%;
   height: auto;
   margin: auto;
   justify-content: center;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+.postlistHead {
+  display: flex;
+  border: 1px black solid;
+  flex-direction: row;
+  border-radius: 7px;
+  width: 95%;
+  height: auto;
+  margin: auto;
+  justify-content: space-between;
+  align-items: center;
+}
+.postListFriends {
+  display: flex;
+  border: 1px black solid;
+  flex-direction: row;
+  border-radius: 7px;
+  width: 95%;
+  height: auto;
+  margin: auto;
+  align-items: center;
+  justify-content: space-between;
+}
+.singleSpot {
+  display: flex;
+  justify-content: center;
+  border: 1px solid black;
+  border-radius: 12px;
+  margin-top: 2em;
+  padding: 1.5rem;
+  margin: auto;
+  flex-direction: column;
+  align-items: flex-end;
+}
+.spotSkateStatus {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.nameAndLike {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
 .postbody {
   display: flex;
   justify-content: space-between;
-  margin: 2em;
   border-bottom: 1px solid black;
   align-items: center;
+  flex-direction: column;
+  width: inherit;
 }
 
 .my-post-button {
@@ -46,8 +91,6 @@ textarea {
   font-size: 1rem;
   font-family: inherit;
   max-width: fit-content;
-  padding: 0.5rem 0.5rem;
-  margin-left: 4em;
 }
 
 .my-post-button:hover {
@@ -59,8 +102,7 @@ textarea {
 
 .likeButton {
   display: inline-block;
-  padding: 2px 5px 5px 5px;
-  font-size: 1.25rem;
+  padding: 2px 2px 2px 2px;
   cursor: pointer;
   text-align: center;
   text-decoration: none;
@@ -69,13 +111,11 @@ textarea {
   background-color: #3b4255;
   border: none;
   border-radius: 15px;
-  box-shadow: 0 9px #999;
-  margin: 20px 20px;
+  margin: 10px 10px;
 }
 .dislikeButton {
   display: inline-block;
-  padding: 5px 5px 2px 5px;
-  font-size: 1.25rem;
+  padding: 2px 2px 2px 2px;
   cursor: pointer;
   text-align: center;
   text-decoration: none;
@@ -84,44 +124,39 @@ textarea {
   background-color: #424c68;
   border: none;
   border-radius: 15px;
-  box-shadow: 0 9px #999;
-  margin: 20px 20px;
+  margin: 10px 10px;
 }
 .likeButtonActive {
   background-color: #39cc2c;
   color: white;
   box-shadow: 0 5px #666;
-  transform: translateY(4px);
   display: inline-block;
-  padding: 2px 5px 5px 5px;
-  font-size: 1.25rem;
+  padding: 2px 2px 2px 2px;
   cursor: pointer;
   text-align: center;
   text-decoration: none;
   outline: none;
   border: none;
   border-radius: 15px;
-  margin: 20px 20px;
+  margin: 10px 10px;
 }
 .dislikeButtonActive {
   background-color: #e22d15;
   color: white;
   box-shadow: 0 5px #666;
-  transform: translateY(4px);
   display: inline-block;
-  padding: 5px 5px 2px 5px;
-  font-size: 1.25rem;
+  padding: 2px 2px 2px 2px;
   cursor: pointer;
   text-align: center;
   text-decoration: none;
   outline: none;
   border: none;
   border-radius: 15px;
-  margin: 20px 20px;
+  margin: 10px 10px;
 }
 
 .name-container {
-  margin-bottom: 2em;
+  margin-bottom: 0.5em;
   text-align: left;
   text-transform: uppercase;
 }
@@ -146,18 +181,18 @@ textarea {
   border: 1px solid black;
   border-radius: 12px;
   margin-top: 2em;
-  width: 30%;
+
   padding: 2em;
   margin: auto;
 }
 .activeOn {
   background-color: #39cc2c;
   color: white;
-  box-shadow: 0 5px #666;
+  box-shadow: 0 9px #666;
   transform: translateY(4px);
   display: inline-block;
-  padding: 2px 5px 5px 5px;
-  font-size: 1.25rem;
+  padding: 2px 2px 2px 2px;
+
   cursor: pointer;
   text-align: center;
   text-decoration: none;
@@ -169,8 +204,8 @@ textarea {
 
 .activeOff {
   display: inline-block;
-  padding: 2px 5px 5px 5px;
-  font-size: 1.25rem;
+  padding: 2px 2px 2px 2px;
+
   cursor: pointer;
   text-align: center;
   text-decoration: none;
@@ -179,11 +214,11 @@ textarea {
   background-color: #3b4255;
   border: none;
   border-radius: 15px;
-  box-shadow: 0 9px #999;
+  box-shadow: 0 5px #999;
   margin: 20px 20px;
 }
 
-.inactiveOff{
+.inactiveOff {
   display: inline-block;
   padding: 5px 5px 2px 5px;
   font-size: 1.25rem;
@@ -195,14 +230,14 @@ textarea {
   background-color: #424c68;
   border: none;
   border-radius: 15px;
-  box-shadow: 0 9px #999;
+  box-shadow: 0 5px #999;
   margin: 20px 20px;
 }
 
-.inactiveOn{
+.inactiveOn {
   background-color: #e22d15;
   color: white;
-  box-shadow: 0 5px #666;
+  box-shadow: 0 9px #666;
   transform: translateY(4px);
   display: inline-block;
   padding: 5px 5px 2px 5px;
@@ -214,4 +249,8 @@ textarea {
   border: none;
   border-radius: 15px;
   margin: 20px 20px;
+}
+
+#friendSkateButton {
+  cursor: default;
 }

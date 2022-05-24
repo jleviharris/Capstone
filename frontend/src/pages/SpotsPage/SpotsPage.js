@@ -4,6 +4,7 @@ import ErrorBoundary from "../ErrorBoundary";
 import AxiosSpots from "../../Routes/spotsRoutes";
 import DisplaySpots from "../../components/Spots/displaySpots";
 import DisplaySingleSpot from "../../components/Spots/displaySingleSpot";
+import AxiosUsers from "../../Routes/userRoutes";
 
 const SpotsPage = () => {
   const [spotList, setSpotList] = useState([]);
@@ -13,9 +14,15 @@ const SpotsPage = () => {
   const [hidden, setHidden] = useState(false);
   const [singleSpot, setSingleSpot] = useState();
   const [postList, setPostList] = useState([]);
+  const [freshUser, setFreshUser] = useState();
 
+  async function setUser(userId) {
+    let tempUser = await AxiosUsers.getUser(userId);
+    setFreshUser(tempUser);
+  }
   useEffect(() => {
     getAllSpots();
+    setUser(userId);
   }, [update]);
 
   function handleClick() {
@@ -38,6 +45,7 @@ const SpotsPage = () => {
               spotList={spotList}
               setHidden={setHidden}
               setSingleSpot={setSingleSpot}
+              hidden={hidden}
             />
           </ErrorBoundary>
         </div>
@@ -48,9 +56,10 @@ const SpotsPage = () => {
           setHidden={setHidden}
           handleClick={handleClick}
           userId={userId}
-          singleSpot={singleSpot}
           setPostList={setPostList}
           postList={postList}
+          freshUser={freshUser}
+          user={user}
         />
       )}
     </div>

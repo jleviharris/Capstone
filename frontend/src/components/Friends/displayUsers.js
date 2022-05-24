@@ -80,14 +80,16 @@ const DisplayUsers = ({
 
   return (
     <div className="postlist">
-      <div>Add Friends</div>
-      <button
-        onClick={() => {
-          filterUsers(userList);
-        }}
-      >
-        <span className="material-symbols-outlined">arrow_downward</span>
-      </button>
+      <div className="postlistHead">
+        <div>Add Friends</div>
+        <button
+          onClick={() => {
+            filterUsers(userList);
+          }}
+        >
+          <span className="material-symbols-outlined">arrow_downward</span>
+        </button>
+      </div>
       {updatedUsers
         .map((user, index) => {
           return (

@@ -1,0 +1,21 @@
+
+.textArea {
+    width: 90%;
+    height: 5rem;
+    font-size: medium;
+    justify-content: center;
+  }
+  
+  .form-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .name-form-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  

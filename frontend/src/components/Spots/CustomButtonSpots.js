@@ -80,7 +80,7 @@ const CustomButtonSpots = ({ singleSpot }) => {
     }
   }
   return (
-    <div>
+    <div className="likeAndDislike">
       <button
         className={buttonClass}
         onClick={(event) => {

@@ -1,87 +1,77 @@
-import React, { useContext, useEffect, useState } from "react";
-import CreatePost from "../../components/Posts/createPosts";
-import DisplayPosts from "../../components/Posts/displayPosts";
-import AxiosPosts from "../../Routes/postRoutes";
-import AuthContext from "../../context/AuthContext";
-import ErrorBoundary from "../ErrorBoundary";
-import DisplaySinglePost from "../../components/Posts/displaySinglePost";
-import SetSkateStatus from "../../components/skateStatus";
-import AxiosUsers from "../../Routes/userRoutes";
+// import React, { useContext, useEffect, useState } from "react";
+// import CreatePost from "../../components/Posts/createPosts";
+// import DisplayPosts from "../../components/Posts/displayPosts";
+// import AxiosPosts from "../../Routes/postRoutes";
+// import AuthContext from "../../context/AuthContext";
+// import ErrorBoundary from "../ErrorBoundary";
+// import DisplaySinglePost from "../../components/Posts/displaySinglePost";
+// import SetSkateStatus from "../../components/skateStatus";
+// import AxiosUsers from "../../Routes/userRoutes";
+// import DisplayCurrentFriendsHP from "../../components/Friends/displayCurrentFriendsHP";
 
-const HomePage = () => {
-  const [postList, setPostList] = useState([]);
-  const { user } = useContext(AuthContext);
-  const userId = user._id || null;
-  const [update, setUpdate] = useState(false);
-  const [hidden, setHidden] = useState(false);
-  const [singlePost, setSinglePost] = useState();
-  const name = user.name || null;
-  const [skateActive, setSkateActive] = useState("");
-  const [skateInactive, setSkateInactive] = useState("");
-  const [freshUser, setFreshUser] = useState();
+// const HomePage = () => {
+//   const [postList, setPostList] = useState([]);
+//   const { user } = useContext(AuthContext);
+//   const userId = user._id || null;
+//   const name = user.name || null;
+//   const [update, setUpdate] = useState(false);
+//   const [hidden, setHidden] = useState(false);
+//   const [singlePost, setSinglePost] = useState();
+//   const [userFriendsList, setUserFriendsList] = useState([]);
+//   const [singleUser, setSingleUser] = useState();
+//   const [friendObjList, setFriendObjList] = useState([]);
 
-  useEffect(() => {
-    getAllPosts();
-    setUser(userId);
-  }, [update]);
+//   useEffect(() => {
+//     getCurrentFriends();
+//     convertFriendsListToObjects(userFriendsList);
+//   }, [update]);
 
-  function handleClick() {
-    setUpdate(!update);
-  }
+//   function handleClick() {
+//     setUpdate(!update);
+//   }
 
-  async function setUser(userId) {
-    let tempUser = await AxiosUsers.getUser(userId);
-    setFreshUser(tempUser);
-  }
+//   async function getCurrentFriends() {
+//     let users = await AxiosUsers.getAllFriends(userId);
+//     if (users) {
+//       setUserFriendsList(users);
+//     } else setUserFriendsList({ Object: "No Users" });
+//   }
+//   async function getFriendById(user) {
+//     let friend = await AxiosUsers.getUser(user);
+//     if (friend) {
+//       return friend;
+//     }
+//   }
+//   async function convertFriendsListToObjects(users) {
+//     let newList = [];
+//     for (let i = 0; i < users.length; i++) {
+//       let newObj = await getFriendById(users[i]);
+//       newList.push(newObj);
+//     }
+//     setFriendObjList(newList);
+//   }
 
-  async function getAllPosts() {
-    let posts = await AxiosPosts.getAllPosts();
-    if (posts) {
-      let newList = [];
-      for (let i = 0; i < posts.length; i++) {
-        if (posts[i].spotPost.length === 0) {
-          newList.push(posts[i]);
-        }
-      }
-      setPostList(newList);
-    } else setPostList({ Object: "No Posts" });
-  }
+//   return (
+//     <div>
+//       <h1 className="container-0">Home Page for {user.name}!</h1>;
+//       {hidden === false && (
+//         <div>
+//           <ErrorBoundary>
+//             <DisplayCurrentFriendsHP
+//               userFriendsList={userFriendsList}
+//               setHidden={setHidden}
+//               setSingleUser={setSingleUser}
+//               userId={userId}
+//               handleClick={handleClick}
+//               update={update}
+//               friendObjList={friendObjList}
+//             />
+//           </ErrorBoundary>
+//         </div>
+//       )}
+//       {hidden && <div></div>}
+//     </div>
+//   );
+// };
 
-  return (
-    <div>
-      <h1 className="container-0">Home Page for {user.name}!</h1>;
-      {hidden === false && (
-        <div>
-          <SetSkateStatus
-            user={user}
-            userId={userId}
-            skateInactive={skateInactive}
-            setSkateInactive={setSkateInactive}
-            skateActive={skateActive}
-            setSkateActive={setSkateActive}
-            freshUser={freshUser}
-            setFreshUser={setFreshUser}
-          />
-          <CreatePost userId={userId} handleClick={handleClick} name={name} />
-          <ErrorBoundary>
-            <DisplayPosts
-              postList={postList}
-              setHidden={setHidden}
-              setSinglePost={setSinglePost}
-            />
-          </ErrorBoundary>
-        </div>
-      )}
-      {hidden && (
-        <DisplaySinglePost
-          singlePost={singlePost}
-          setHidden={setHidden}
-          handleClick={handleClick}
-          userId={userId}
-        />
-      )}
-    </div>
-  );
-};
-
-export default HomePage;
+// export default HomePage;

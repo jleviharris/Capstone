@@ -44,3 +44,7 @@ html {
   margin-top: 5px;
   margin-bottom: 20px;
 }
+
+.likeAndDislike {
+  display: flex;
+}
