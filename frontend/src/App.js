@@ -28,7 +28,7 @@ function App() {
           path="/"
           element={
             <PrivateRoute>
-              <HomePage />
+              <SpotsPage />
             </PrivateRoute>
           }
         />
@@ -40,7 +40,6 @@ function App() {
         <Route path="/feedPage" element={<FeedPage />} />
         <Route path="/friendsPage" element={<FriendsPage />} />
       </Routes>
-      <Footer />
     </div>
   );
 }

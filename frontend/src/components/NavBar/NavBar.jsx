@@ -5,10 +5,28 @@ import { Link, useNavigate } from "react-router-dom";
 import AuthContext from "../../context/AuthContext";
 import React from "react";
 import { useContext } from "react";
+import { useState } from "react";
 
 const Navbar = () => {
   const { logoutUser, user } = useContext(AuthContext);
+  const [menuHidden, setMenuHidden] = useState(false);
+ 
   const navigate = useNavigate();
+ 
+  function handleClickTrue() {
+    setMenuHidden(true);
+  }
+  
+  function handleClickFalse() {
+    setMenuHidden(false);
+  }
+  function logoutTheUser(){
+    handleClickFalse();
+    logoutUser();
+  }
+  
+  
+ 
   return (
     <div className="navBar">
       <p className="brand">
@@ -21,41 +39,57 @@ const Navbar = () => {
           }}
         >
           <b>
-            Skate <span style={{ color: "steelblue" }}>Status</span>
+            Skate <span style={{ color: "#f709a0" }}>Status</span>
           </b>
         </Link>
       </p>
-      <ul>
-        <li>{user && <button onClick={() => navigate("/")}>Home</button>}</li>
-        <li>{user && <button onClick={() => navigate("/spots")}>Spots</button>}</li>
-        <li>
-          {user && (
-            <button onClick={() => navigate("/myPosts")}>My Posts</button>
-          )}
-        </li>
-        <li>
-          {user && (
-            <button onClick={() => navigate("/feedPage")}>Friends Feed</button>
-          )}
-        </li>
-        <li>
-          {user && (
-            <button onClick={() => navigate("/profile")}>Profile</button>
-          )}
-        </li>
-        <li>
-          {user && (
-            <button onClick={() => navigate("/friendsPage")}>Friends</button>
-          )}
-        </li>
-        <li>
-          {user ? (
-            <button onClick={logoutUser}>Logout</button>
-          ) : (
-            <button onClick={() => navigate("/login")}>Login</button>
-          )}
-        </li>
-      </ul>
+    
+        <div>{user && <button onClick={() => {
+          if (menuHidden === false){
+                  handleClickTrue();  
+                  ;} else if (menuHidden) {handleClickFalse();  
+                    ;} 
+                }}><span className="material-symbols-outlined">
+menu
+</span></button>}</div>
+{menuHidden && (
+
+  <ul>
+       
+         <li>{user && <button onClick={() => {navigate("/spots");handleClickFalse()}}>Spots</button>}</li>
+         <li>
+           {user && (
+             <button onClick={() => {navigate("/friendsPage");handleClickFalse()}}>Friends</button>
+           )}
+         </li>
+         <li>
+           {user && (
+             <button onClick={() => {navigate("/myPosts");handleClickFalse()}}>My Reviews</button>
+           )}
+         </li>
+         
+         <li>
+           {user && (
+             <button onClick={() => {navigate("/feedPage");handleClickFalse()}}>Friends Feed</button>
+           )}
+         </li>
+         <li>
+           {user && (
+             <button onClick={() => {navigate("/profile");handleClickFalse()}}>Profile</button>
+           )}
+         </li>
+       
+         <li>
+           {user ? (
+             <button onClick={logoutTheUser}>Logout</button>
+           ) : (
+             <button onClick={() => {handleClickFalse();navigate("/login")}}>Login</button>
+           )}
+         </li>
+         </ul>
+      )}
+       
+      
     </div>
   );
 };

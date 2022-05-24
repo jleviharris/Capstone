@@ -35,6 +35,11 @@ h3 {
   border-radius: 17px;
   margin-top: 3em;
 }
+.stance-container {
+  border: 1px solid black;
+  border-radius: 17px;
+  margin-top: 3em;
+}
 
 .projects-container {
   border: 1px solid black;

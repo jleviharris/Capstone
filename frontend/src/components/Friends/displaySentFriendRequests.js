@@ -32,18 +32,19 @@ const DisplaySentFriendRequests = ({
       newList.push(newObj);
     }
     setFriendObjList(newList);
-    console.log(friendObjList);
   }
   return (
     <div className="postlist">
-      <div>Pending Friends</div>
-      <button
-        onClick={() => {
-          convertFriendsListToObjects(userSentFriendRequestList);
-        }}
-      >
-        <span className="material-symbols-outlined">arrow_downward</span>
-      </button>
+      <div className="postlistHead">
+        <div>Pending Friends</div>
+        <button
+          onClick={() => {
+            convertFriendsListToObjects(userSentFriendRequestList);
+          }}
+        >
+          <span className="material-symbols-outlined">arrow_downward</span>
+        </button>
+      </div>
       {friendObjList
         .map((user, index) => {
           return (

@@ -67,14 +67,11 @@ const DisplayUsers = ({
       if (userId !== users[i]._id) {
         if (!allLists.includes(users[i]._id)) {
           newList.push(users[i]);
-          console.log(users[i]);
         }
       }
     }
 
-    console.log(newList);
     setUpdatedUsers(newList);
-    console.log(updatedUsers);
   }
 
   function handleClickHidden() {
@@ -83,14 +80,16 @@ const DisplayUsers = ({
 
   return (
     <div className="postlist">
-      <div>Add Friends</div>
-      <button
-        onClick={() => {
-          filterUsers(userList);
-        }}
-      >
-        <span className="material-symbols-outlined">arrow_downward</span>
-      </button>
+      <div className="postlistHead">
+        <div>Add Friends</div>
+        <button
+          onClick={() => {
+            filterUsers(userList);
+          }}
+        >
+          <span className="material-symbols-outlined">arrow_downward</span>
+        </button>
+      </div>
       {updatedUsers
         .map((user, index) => {
           return (

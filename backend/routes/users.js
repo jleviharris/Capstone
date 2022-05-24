@@ -248,5 +248,35 @@ router.put("/acceptFriendRequests/:userId", async (req, res) => {
     return res.status(500).send(`Internal Server Error: ${error}`);
   }
 });
+// Set skateStatus
+// http://localhost:3007/api/users/skateStatus/:userId
+router.put("/skateStatus/:userId", async (req, res) => {
+  try {
+    const user = await User.updateOne(
+      { _id: req.params.userId },
+      { $set: { skateStatus: req.body.skateStatus } },
+      { new: true }
+    );
+    if (!user) return res.status(400).send(`No user to show!`);
+    return res.send(user.skateStatus);
+  } catch (error) {
+    return res.status(500).send(`Internal Server Error: ${error}`);
+  }
+});
+// Update current park
+// http://localhost:3007/api/users/currentPark/:userId
+router.put("/currentPark/:userId", async (req, res) => {
+  try {
+    const user = await User.updateOne(
+      { _id: req.params.userId },
+      { $set: { currentPark: req.body.currentPark } },
+      { new: true }
+    );
+    if (!user) return res.status(400).send(`No user to show!`);
+    return res.send(user.skateStatus);
+  } catch (error) {
+    return res.status(500).send(`Internal Server Error: ${error}`);
+  }
+});
 
 module.exports = router;

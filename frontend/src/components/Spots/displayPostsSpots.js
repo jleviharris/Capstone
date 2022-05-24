@@ -4,12 +4,20 @@ import { useEffect, useState } from "react";
 
 import React from "react";
 
-const DisplayPostsSpot = ({ spotId, update, setUpdate, singlePost, setSinglePost, postList, setPostList, hidden, setHidden }) => {
-
-
+const DisplayPostsSpot = ({
+  spotId,
+  update,
+  setUpdate,
+  singlePost,
+  setSinglePost,
+  postList,
+  setPostList,
+  hidden,
+  setHidden,
+}) => {
   useEffect(() => {
     getAllPosts();
-  }, [update]);
+  }, []);
 
   function handleClick() {
     setUpdate(!update);
@@ -20,14 +28,13 @@ const DisplayPostsSpot = ({ spotId, update, setUpdate, singlePost, setSinglePost
     if (posts) {
       let newList = [];
       for (let i = 0; i < posts.length; i++) {
-          if (posts[i].spotId === spotId) {
-            newList.push(posts[i]);
+        if (posts[i].spotId === spotId) {
+          newList.push(posts[i]);
         }
       }
       setPostList(newList);
     } else setPostList({ Object: "No Posts" });
   }
-
 
   return (
     <div className="postlist">
@@ -49,8 +56,6 @@ const DisplayPostsSpot = ({ spotId, update, setUpdate, singlePost, setSinglePost
                 <p className="post">Post:</p>
                 <div className="body-container">{post.body}</div>
               </button>
-
-           
             </div>
           );
         })

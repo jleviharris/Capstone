@@ -17,10 +17,10 @@ const userSchema = mongoose.Schema({
   friendsList: { type: Array, default: [] },
   pendingFriends: { type: Array, default: [] },
   friendRequests: { type: Array, default: [] },
-  stance: { type: String, default: "Regular" },
+  stance: { type: String, default: " N/A " },
   dateAdded: { type: Date, default: Date.now() },
   skateStatus: { type: String, default: "Inactive" },
-  currentPark: { type: Array, default: [] },
+  currentPark: { type: String, default: "" },
 });
 
 userSchema.methods.generateAuthToken = function () {

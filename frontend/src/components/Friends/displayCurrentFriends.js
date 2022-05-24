@@ -1,7 +1,7 @@
 import "../Posts/MyPost.css";
 import AxiosUsers from "../../Routes/userRoutes";
 import React, { useState, useContext, useEffect } from "react";
-import SetSkateStatus from "../skateStatus";
+import FriendSkateStatus from "../friendsSkateStatus";
 import AuthContext from "../../context/AuthContext";
 
 const DisplayCurrentFriends = ({
@@ -37,17 +37,18 @@ const DisplayCurrentFriends = ({
     }
     setFriendObjList(newList);
   }
-  console.log(friendObjList);
   return (
     <div className="postlist">
-      <div>Your Friends</div>
-      <button
-        onClick={() => {
-          convertFriendsListToObjects(userFriendsList);
-        }}
-      >
-        <span className="material-symbols-outlined">arrow_downward</span>
-      </button>
+      <div className="postlistHead">
+        <div>Your Friends</div>
+        <button
+          onClick={() => {
+            convertFriendsListToObjects(userFriendsList);
+          }}
+        >
+          <span className="material-symbols-outlined">arrow_downward</span>
+        </button>
+      </div>
       {friendObjList
         .map((friend, index) => {
           return (
@@ -61,19 +62,12 @@ const DisplayCurrentFriends = ({
               >
                 {" "}
                 <div className="name-container">{friend.name}</div>
-                <p className="post">About:</p>
+                {/* <p className="post">About:</p>
                 <div className="name-container">{friend.aboutMe}</div>
                 <p className="post">Stance:</p>
-                <div className="name-container">{friend.stance}</div>
+                <div className="name-container">{friend.stance}</div> */}
               </button>
-              <SetSkateStatus
-                user={user}
-                userId={userId}
-                skateInactive={skateInactive}
-                setSkateInactive={setSkateInactive}
-                skateActive={skateActive}
-                setSkateActive={setSkateActive}
-              />
+              <FriendSkateStatus friend={friend} />
               <button
                 onClick={() => {
                   //logged in user "userId"
