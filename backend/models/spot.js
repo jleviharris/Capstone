@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const Joi = require("joi");
 
 const spotSchema = mongoose.Schema({
-  name: { type: String, required: true },
+  name: { type: String, required: true, minLength: 3, maxLength: 50 },
   currentSkaters: { type: Array, default: [] },
   likes: { type: Array, default: [] },
   dislikes: { type: Array, default: [] },
@@ -12,6 +12,7 @@ const spotSchema = mongoose.Schema({
   lat: { type: String, required: true, default: "" },
   lng: { type: String, required: true, default: "" },
   dateAdded: { type: Date, default: Date.now() },
+  blankName: { type: String, default: "na" },
 });
 
 const validateSpot = (spot) => {
