@@ -23,7 +23,7 @@ const SpotsPage = () => {
   useEffect(() => {
     getAllSpots();
     setUser(userId);
-  }, [update]);
+  }, [!update]);
 
   function handleClick() {
     setUpdate(!update);
@@ -46,6 +46,7 @@ const SpotsPage = () => {
               setHidden={setHidden}
               setSingleSpot={setSingleSpot}
               hidden={hidden}
+              singleSpot={singleSpot}
             />
           </ErrorBoundary>
         </div>

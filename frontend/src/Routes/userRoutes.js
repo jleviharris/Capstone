@@ -147,6 +147,45 @@ async function acceptFriendRequests(userId, obj) {
     console.log("Error adding friend: " + error);
   }
 }
+async function updateCheckInTime(userId, obj) {
+  try {
+    let response = await axios.put(
+      "http://localhost:3007/api/users/checkInTime/" + userId,
+      obj
+    );
+    if (response) {
+      return response.data;
+    }
+  } catch (error) {
+    console.log("Error checking in: " + error);
+  }
+}
+async function updateCheckOutTime(userId, obj) {
+  try {
+    let response = await axios.put(
+      "http://localhost:3007/api/users/checkOutTime/" + userId,
+      obj
+    );
+    if (response) {
+      return response.data;
+    }
+  } catch (error) {
+    console.log("Error checking out: " + error);
+  }
+}
+async function updateSkateTime(userId, obj) {
+  try {
+    let response = await axios.put(
+      "http://localhost:3007/api/users/skateTime/" + userId,
+      obj
+    );
+    if (response) {
+      return response.data;
+    }
+  } catch (error) {
+    console.log("Error updating skate time: " + error);
+  }
+}
 
 const AxiosUsers = {
   getUser,
@@ -161,5 +200,8 @@ const AxiosUsers = {
   removeFromFriendRequests,
   removeFromPendingFriends,
   removeFriend,
+  updateCheckInTime,
+  updateCheckOutTime,
+  updateSkateTime,
 };
 export default AxiosUsers;

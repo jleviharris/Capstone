@@ -2,7 +2,7 @@ import React from "react";
 import CustomButtonSpots from "./CustomButtonSpots";
 import AxiosUsers from "../../Routes/userRoutes";
 
-const DisplaySpots = ({ spotList, setHidden, setSingleSpot }) => {
+const DisplaySpots = ({ spotList, setHidden, setSingleSpot, singleSpot }) => {
   function handleClick() {
     setHidden(true);
   }
@@ -21,14 +21,17 @@ const DisplaySpots = ({ spotList, setHidden, setSingleSpot }) => {
                 }}
               >
                 {" "}
-                <div className="nameAndLike">
-                  <div className="name-container">{spot.name}</div>
-                  <CustomButtonSpots singleSpot={spot} />
-                </div>
+                <div className="name-container">{spot.name}</div>
+                <br />
+                Vert: {spot.vert}
+                <br />
+                Street: {spot.street}
                 <br />
                 <p className="post">Address:</p>
                 <div className="body-container">{spot.address}</div>
               </button>
+
+              {/* <CustomButtonSpots singleSpot={singleSpot} /> */}
             </div>
           );
         })

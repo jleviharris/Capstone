@@ -10,11 +10,10 @@ const CustomButtonSpots = ({ singleSpot }) => {
   const [numOfDislikes, setNumOfDislikes] = useState(null);
   const { user } = useContext(AuthContext);
   const userId = user._id || null;
-  const spotId = singleSpot._id || null;
+  // const spotId = singleSpot._id || null;
 
-  
   useEffect(() => {
-   
+    console.log(singleSpot);
     setNumOfLikes(singleSpot.likes.length);
     setNumOfDislikes(singleSpot.dislikes.length);
     if (singleSpot.dislikes.includes(userId)) {
@@ -27,17 +26,9 @@ const CustomButtonSpots = ({ singleSpot }) => {
       setButtonClass("likeButton");
       setButtonClass2("dislikeButton");
     }
-    
   }, []);
- 
- 
- 
 
   function handleClick(event) {
-
-
-   
-
     async function updateTheLikeList(spotId, obj) {
       await AxiosSpots.updateSpotsLikes(spotId, obj);
       return obj;
@@ -54,17 +45,15 @@ const CustomButtonSpots = ({ singleSpot }) => {
       await AxiosSpots.updateSpotsDislikesRemove(spotId, obj);
       return obj;
     }
-   
 
-
-    let likes="likes";
-    let dislikes="dislikes";
+    let likes = "likes";
+    let dislikes = "dislikes";
     if (event.target.id === "like") {
       if (buttonClass === "likeButton") {
         setButtonClass("likeButtonActive");
         updateTheLikeList(singleSpot._id, { likes: userId });
-        updateTheDislikeListRemove(singleSpot._id,  {dislikes: userId});
-        setButtonClass2("dislikeButton");  
+        updateTheDislikeListRemove(singleSpot._id, { dislikes: userId });
+        setButtonClass2("dislikeButton");
       } else {
         setButtonClass("likeButton");
       }
@@ -72,7 +61,7 @@ const CustomButtonSpots = ({ singleSpot }) => {
       if (buttonClass2 === "dislikeButton") {
         setButtonClass2("dislikeButtonActive");
         updateTheLikeListRemove(singleSpot._id, { likes: userId });
-        updateTheDislikeList(singleSpot._id, {dislikes: userId});
+        updateTheDislikeList(singleSpot._id, { dislikes: userId });
         setButtonClass("likeButton");
       } else {
         setButtonClass2("dislikeButton");
@@ -84,24 +73,24 @@ const CustomButtonSpots = ({ singleSpot }) => {
       <button
         className={buttonClass}
         onClick={(event) => {
-          
           handleClick(event);
-      
         }}
       >
         <div>{numOfLikes}</div>
-        <i id="like" className="fa fa-thumbs-up"></i>
+        <i id="like">
+          <span className="material-symbols-outlined">favorite</span>
+        </i>
       </button>
       <button
         className={buttonClass2}
         onClick={(event) => {
-      
           handleClick(event);
-        
         }}
       >
         <div>{numOfDislikes}</div>
-        <i id="dislike" className="fa fa-thumbs-down"></i>
+        <i id="dislike">
+          <span className="material-symbols-outlined">heart_broken</span>
+        </i>
       </button>
     </div>
   );

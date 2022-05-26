@@ -56,13 +56,18 @@ textarea {
 .singleSpot {
   display: flex;
   justify-content: center;
-  border: 1px solid black;
-  border-radius: 12px;
-  margin-top: 2em;
-  padding: 1.5rem;
-  margin: auto;
+  /* border: 1px solid rgb(247, 9, 160); */
+  /* border-radius: 12px; */
+  /* margin-top: 2em; */
+  /* padding: 1.5rem;
+  margin: auto; */
   flex-direction: column;
   align-items: flex-end;
+}
+
+.closeButton {
+  position: absolute;
+  left: 95%;
 }
 .spotSkateStatus {
   display: flex;
@@ -79,8 +84,8 @@ textarea {
   display: flex;
   justify-content: space-between;
   border-bottom: 1px solid black;
-  align-items: center;
-  flex-direction: column;
+  align-items: flex-start;
+  flex-direction: row;
   width: inherit;
 }
 
@@ -107,8 +112,8 @@ textarea {
   text-align: center;
   text-decoration: none;
   outline: none;
-  color: #fff;
-  background-color: #3b4255;
+  color: red;
+  background-color: #424c68;
   border: none;
   border-radius: 15px;
   margin: 10px 10px;
@@ -120,16 +125,15 @@ textarea {
   text-align: center;
   text-decoration: none;
   outline: none;
-  color: #fff;
+  color: red;
   background-color: #424c68;
   border: none;
   border-radius: 15px;
   margin: 10px 10px;
 }
 .likeButtonActive {
-  background-color: #39cc2c;
-  color: white;
-  box-shadow: 0 5px #666;
+  color: #f50404;
+  /* box-shadow: 0 5px #666; */
   display: inline-block;
   padding: 2px 2px 2px 2px;
   cursor: pointer;
@@ -141,18 +145,21 @@ textarea {
   margin: 10px 10px;
 }
 .dislikeButtonActive {
-  background-color: #e22d15;
-  color: white;
-  box-shadow: 0 5px #666;
   display: inline-block;
   padding: 2px 2px 2px 2px;
   cursor: pointer;
   text-align: center;
   text-decoration: none;
   outline: none;
+  color: red;
+  /* background-color: #424c68; */
   border: none;
   border-radius: 15px;
   margin: 10px 10px;
+}
+.friendStatus {
+  display: flex;
+  align-items: stretch;
 }
 
 .name-container {
@@ -160,10 +167,23 @@ textarea {
   text-align: left;
   text-transform: uppercase;
 }
-
+.singleSpotSkateStatus {
+  border: 1px solid rgb(247, 9, 160);
+  padding: 10px;
+  margin: 2rem 3rem;
+  border-radius: 12px;
+}
+.setStatusButtons {
+}
 .body-container {
   text-align: left;
-  margin-top: 0;
+  /* margin: 0; */
+}
+.singleSpotFull {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  align-items: center;
 }
 
 .post {

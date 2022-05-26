@@ -11,9 +11,7 @@ const CustomButton = ({ post }) => {
   const { user } = useContext(AuthContext);
   const userId = user._id || null;
 
-  
   useEffect(() => {
-   
     setNumOfLikes(post.likes.length);
     setNumOfDislikes(post.dislikes.length);
     if (post.dislikes.includes(userId)) {
@@ -26,17 +24,9 @@ const CustomButton = ({ post }) => {
       setButtonClass("likeButton");
       setButtonClass2("dislikeButton");
     }
-    
   }, []);
- 
- 
- 
 
   function handleClick(event) {
-
-
-   
-
     async function updateTheLikeList(postId, obj) {
       await AxiosPosts.updatePostsLikes(postId, obj);
       return obj;
@@ -53,17 +43,15 @@ const CustomButton = ({ post }) => {
       await AxiosPosts.updatePostsDislikesRemove(postId, obj);
       return obj;
     }
-   
 
-
-    let likes="likes";
-    let dislikes="dislikes";
+    let likes = "likes";
+    let dislikes = "dislikes";
     if (event.target.id === "like") {
       if (buttonClass === "likeButton") {
         setButtonClass("likeButtonActive");
         updateTheLikeList(post._id, { likes: userId });
-        updateTheDislikeListRemove(post._id,  {dislikes: userId});
-        setButtonClass2("dislikeButton");  
+        updateTheDislikeListRemove(post._id, { dislikes: userId });
+        setButtonClass2("dislikeButton");
       } else {
         setButtonClass("likeButton");
       }
@@ -71,7 +59,7 @@ const CustomButton = ({ post }) => {
       if (buttonClass2 === "dislikeButton") {
         setButtonClass2("dislikeButtonActive");
         updateTheLikeListRemove(post._id, { likes: userId });
-        updateTheDislikeList(post._id, {dislikes: userId});
+        updateTheDislikeList(post._id, { dislikes: userId });
         setButtonClass("likeButton");
       } else {
         setButtonClass2("dislikeButton");
@@ -83,24 +71,24 @@ const CustomButton = ({ post }) => {
       <button
         className={buttonClass}
         onClick={(event) => {
-          
           handleClick(event);
-      
         }}
       >
         <div>{numOfLikes}</div>
-        <i id="like" className="fa fa-thumbs-up"></i>
+        <i id="like">
+          <span class="material-symbols-outlined">favorite</span>
+        </i>
       </button>
       <button
         className={buttonClass2}
         onClick={(event) => {
-      
           handleClick(event);
-        
         }}
       >
         <div>{numOfDislikes}</div>
-        <i id="dislike" className="fa fa-thumbs-down"></i>
+        <i id="dislike">
+          <span class="material-symbols-outlined">heart_broken</span>
+        </i>
       </button>
     </div>
   );

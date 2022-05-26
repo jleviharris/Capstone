@@ -105,11 +105,8 @@ const FriendsPage = () => {
         <DisplaySingleUser
           singleUser={singleUser}
           setHidden={setHidden}
-          handleClick={handleClick}
-          userId={userId}
-          singleUser={singleUser}
-          setUserList={setUserList}
-          userList={userList}
+          
+         
         />
       )}
     </div>

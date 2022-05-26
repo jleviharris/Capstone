@@ -53,21 +53,23 @@ const DisplayCurrentFriends = ({
         .map((friend, index) => {
           return (
             <div key={index} className="postbody">
-              <button
-                className="my-post-button"
-                onClick={() => {
-                  handleClick(friend._id);
-                  setSingleUser(friend._id);
-                }}
-              >
-                {" "}
-                <div className="name-container">{friend.name}</div>
-                {/* <p className="post">About:</p>
+              <div>
+                <button
+                  className="my-post-button"
+                  onClick={() => {
+                    handleClick(friend._id);
+                    setSingleUser(friend._id);
+                  }}
+                >
+                  {" "}
+                  <div className="name-container">{friend.name}</div>
+                  {/* <p className="post">About:</p>
                 <div className="name-container">{friend.aboutMe}</div>
                 <p className="post">Stance:</p>
                 <div className="name-container">{friend.stance}</div> */}
-              </button>
-              <FriendSkateStatus friend={friend} />
+                </button>
+                <FriendSkateStatus friend={friend} />
+              </div>
               <button
                 onClick={() => {
                   //logged in user "userId"

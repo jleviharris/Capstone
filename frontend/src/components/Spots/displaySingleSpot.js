@@ -73,14 +73,20 @@ const DisplaySingleSpot = ({
   }
 
   return (
-    <div>
+    <div className="singleSpotFull">
+      <button className="closeButton" onClick={() => setHidden(false)}>
+        X
+      </button>
       <div className="singleSpot">
-        <button onClick={() => setHidden(false)}>X</button>
         {singleSpot.name} <br />
         {singleSpot.address}
-        <CustomButtonSpots singleSpot={singleSpot} />
+        <br />
+        Vert: {singleSpot.vert}
+        <br />
+        Street: {singleSpot.street}
+        {/* <CustomButtonSpots singleSpot={singleSpot} /> */}
       </div>
-      <div>
+      <div className="singleSpotSkateStatus">
         <SetSkateStatus
           singleSpot={singleSpot}
           freshUser={freshUser}

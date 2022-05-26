@@ -27,31 +27,40 @@ const FriendSkateStatus = ({ friend }) => {
 
   function displaySkateLocation() {
     if (friend.currentPark.length > 2) {
-      return <div>Skating at {friend.currentPark}</div>;
-    } else return <div> Not Active</div>;
+      return (
+        <div className="friendStatus">
+          {" "}
+          <div id="friendSkateButton" className={skateActive}>
+            <i
+              id="active"
+              className="material-symbols-outlined"
+              style={{ curser: "default" }}
+            >
+              skateboarding
+            </i>
+          </div>
+          <div>
+            {friend.checkInTime} {friend.name} checked in to{" "}
+            {friend.currentPark} for {friend.skateTime}{" "}
+          </div>
+        </div>
+      );
+    } else
+      return (
+        <div className="friendStatus">
+          {" "}
+          <div id="friendSkateButton" className={skateInactive}>
+            <i
+              id="inactive"
+              className="fa-solid fa-skull-crossbones"
+              style={{ curser: "default" }}
+            ></i>
+          </div>
+          Not Active
+        </div>
+      );
   }
 
-  return (
-    <div>
-      <p>Skate Status</p>
-      <div id="friendSkateButton" className={skateActive}>
-        <i
-          id="active"
-          className="material-symbols-outlined"
-          style={{ curser: "default" }}
-        >
-          skateboarding
-        </i>
-      </div>
-      <div id="friendSkateButton" className={skateInactive}>
-        <i
-          id="inactive"
-          className="fa-solid fa-skull-crossbones"
-          style={{ curser: "default" }}
-        ></i>
-      </div>
-      {displaySkateLocation()}
-    </div>
-  );
+  return <div>{displaySkateLocation()}</div>;
 };
 export default FriendSkateStatus;
