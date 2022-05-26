@@ -263,6 +263,51 @@ router.put("/skateStatus/:userId", async (req, res) => {
     return res.status(500).send(`Internal Server Error: ${error}`);
   }
 });
+// Set checkIntime
+// http://localhost:3007/api/users/checkInTime/:userId
+router.put("/checkInTime/:userId", async (req, res) => {
+  try {
+    const user = await User.updateOne(
+      { _id: req.params.userId },
+      { $set: { checkInTime: req.body.checkInTime } },
+      { new: true }
+    );
+    if (!user) return res.status(400).send(`No user to show!`);
+    return res.send(user.checkInTime);
+  } catch (error) {
+    return res.status(500).send(`Internal Server Error: ${error}`);
+  }
+});
+// Set checkOutTime
+// http://localhost:3007/api/users/checkOutTime/:userId
+router.put("/checkOutTime/:userId", async (req, res) => {
+  try {
+    const user = await User.updateOne(
+      { _id: req.params.userId },
+      { $set: { checkOutTime: req.body.checkOutTime } },
+      { new: true }
+    );
+    if (!user) return res.status(400).send(`No user to show!`);
+    return res.send(user.checkOutTime);
+  } catch (error) {
+    return res.status(500).send(`Internal Server Error: ${error}`);
+  }
+});
+// Set skateTime
+// http://localhost:3007/api/users/skateTime/:userId
+router.put("/skateTime/:userId", async (req, res) => {
+  try {
+    const user = await User.updateOne(
+      { _id: req.params.userId },
+      { $set: { skateTime: req.body.skateTime } },
+      { new: true }
+    );
+    if (!user) return res.status(400).send(`No user to show!`);
+    return res.send(user.skateTime);
+  } catch (error) {
+    return res.status(500).send(`Internal Server Error: ${error}`);
+  }
+});
 // Update current park
 // http://localhost:3007/api/users/currentPark/:userId
 router.put("/currentPark/:userId", async (req, res) => {
