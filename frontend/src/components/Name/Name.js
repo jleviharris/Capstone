@@ -40,7 +40,7 @@ const Name = () => {
         <br />
         <p style={{ paddingLeft: "2em" }}>{name && name}</p>
         <br />
-        <div className="stance-buttons">
+        <div className="aboutme-buttons">
           <Button className="stance-button" type="button" onClick={handleShow}>
             Edit
           </Button>

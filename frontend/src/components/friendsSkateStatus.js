@@ -1,4 +1,5 @@
 import "../components/Posts/MyPost.css";
+import "../components/Friends/friends.css";
 
 import React, { useState, useEffect } from "react";
 
@@ -39,7 +40,7 @@ const FriendSkateStatus = ({ friend }) => {
               skateboarding
             </i>
           </div>
-          <div>
+          <div className="friendCheckIn">
             {friend.checkInTime} {friend.name} checked in to{" "}
             {friend.currentPark} for {friend.skateTime}{" "}
           </div>
@@ -56,7 +57,7 @@ const FriendSkateStatus = ({ friend }) => {
               style={{ curser: "default" }}
             ></i>
           </div>
-          Not Active
+          <div className="friendCheckIn"> Not Active</div>
         </div>
       );
   }

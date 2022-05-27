@@ -7,8 +7,8 @@ li {
   display: flex;
   background: rgb(0, 0, 0);
   color: white;
-  margin-bottom: 1rem;
-  padding: 1.5rem 2rem;
+  /* margin-bottom: 1rem;
+  padding: 1.5rem 2rem; */
   flex-direction: column;
   align-items: center;
 }
@@ -27,6 +27,7 @@ li {
   padding: 0.4rem 0.5rem;
   padding: 0px 20px;
   border-radius: 12px;
+  margin-bottom: 1rem;
 }
 
 .navBar button:hover {
@@ -44,5 +45,8 @@ li {
 
 .brand {
   cursor: pointer;
-  font-size: 2rem;
+
+  font-weight: 100;
+  font-family: "Blaka Hollow";
+  font-size: 4rem;
 }

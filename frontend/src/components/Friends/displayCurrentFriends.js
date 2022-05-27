@@ -1,4 +1,4 @@
-import "../Posts/MyPost.css";
+import "../Friends/friends.css";
 import AxiosUsers from "../../Routes/userRoutes";
 import React, { useState, useContext, useEffect } from "react";
 import FriendSkateStatus from "../friendsSkateStatus";
@@ -13,6 +13,8 @@ const DisplayCurrentFriends = ({
   const [skateActive, setSkateActive] = useState("");
   const [skateInactive, setSkateInactive] = useState("");
   const [friendObjList, setFriendObjList] = useState([]);
+  const [checkedFriends, setCheckedFriends] = useState(false);
+  const [arrow, setArrow] = useState("arrow_downward");
   const { user } = useContext(AuthContext);
 
   async function removeFriend(userId, obj) {
@@ -37,55 +39,79 @@ const DisplayCurrentFriends = ({
     }
     setFriendObjList(newList);
   }
+  function handleCheckedFriends() {
+    if (checkedFriends) {
+      setCheckedFriends(false);
+    } else if (!checkedFriends) {
+      setCheckedFriends(true);
+    }
+  }
+  function handleArrow() {
+    if (arrow === "arrow_upward") {
+      setArrow("arrow_downward");
+    } else if (arrow === "arrow_downward") {
+      setArrow("arrow_upward");
+    }
+  }
   return (
-    <div className="postlist">
-      <div className="postlistHead">
+    <div className="friendList">
+      <div className="friendListHead">
         <div>Your Friends</div>
         <button
           onClick={() => {
             convertFriendsListToObjects(userFriendsList);
+            handleCheckedFriends();
+            handleArrow();
           }}
         >
-          <span className="material-symbols-outlined">arrow_downward</span>
+          <span className="material-symbols-outlined">{arrow}</span>
         </button>
       </div>
-      {friendObjList
-        .map((friend, index) => {
-          return (
-            <div key={index} className="postbody">
-              <div>
-                <button
-                  className="my-post-button"
-                  onClick={() => {
-                    handleClick(friend._id);
-                    setSingleUser(friend._id);
-                  }}
-                >
-                  {" "}
-                  <div className="name-container">{friend.name}</div>
-                  {/* <p className="post">About:</p>
+      {checkedFriends && (
+        <div className="friendMapList">
+          {friendObjList
+            .map((friend, index) => {
+              return (
+                <div key={index} className="friendBody">
+                  <div>
+                    <div className="friendButtons">
+                      <button
+                        className="my-friend-button"
+                        onClick={() => {
+                          handleClick(friend._id);
+                          setSingleUser(friend._id);
+                        }}
+                      >
+                        {" "}
+                        <div className="friendName-container">
+                          {friend.name}
+                        </div>
+                        {/* <p className="post">About:</p>
                 <div className="name-container">{friend.aboutMe}</div>
                 <p className="post">Stance:</p>
                 <div className="name-container">{friend.stance}</div> */}
-                </button>
-                <FriendSkateStatus friend={friend} />
-              </div>
-              <button
-                onClick={() => {
-                  //logged in user "userId"
-                  // logged out user "theUser"
-                  removeFriend(userId, { friendsList: friend._id });
-                  removeFriend(friend._id, { friendsList: userId });
+                      </button>{" "}
+                      <button
+                        onClick={() => {
+                          //logged in user "userId"
+                          // logged out user "theUser"
+                          removeFriend(userId, { friendsList: friend._id });
+                          removeFriend(friend._id, { friendsList: userId });
 
-                  console.log(friend);
-                }}
-              >
-                Unfollow
-              </button>
-            </div>
-          );
-        })
-        .reverse()}
+                          console.log(friend);
+                        }}
+                      >
+                        Unfollow
+                      </button>
+                    </div>
+                    <FriendSkateStatus friend={friend} />
+                  </div>
+                </div>
+              );
+            })
+            .reverse()}
+        </div>
+      )}
     </div>
   );
 };

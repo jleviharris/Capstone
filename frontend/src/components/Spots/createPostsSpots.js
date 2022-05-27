@@ -37,7 +37,7 @@ const CreatePostSpot = ({ userId, handleClick, spotId }) => {
       <div>
         <textarea
           type="text"
-          placeholder="Place a review"
+          placeholder="Write a review"
           value={value}
           onChange={(event) => setValue(event.target.value)}
           onKeyUp={(event) => {

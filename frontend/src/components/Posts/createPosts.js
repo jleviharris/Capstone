@@ -6,6 +6,9 @@ import AxiosPosts from "../../Routes/postRoutes";
 
 const CreatePost = ({ userId, handleClick, name }) => {
   const [value, setValue] = useState("");
+  const current = new Date();
+  const date = `${current.getHours()}:${current.getMinutes()}`;
+  console.log(date);
 
   function handlePost(event) {
     event.preventDefault();
@@ -14,6 +17,7 @@ const CreatePost = ({ userId, handleClick, name }) => {
       body: value,
       userId: userId,
       name: name,
+      time: date,
     };
     createNewPost(newPost);
     setValue("");

@@ -32,17 +32,6 @@ async function getAPost(postId) {
     console.log("Error getting posts: " + error);
   }
 }
-async function getAPostBySpotId(spotId) {
-  try {
-    let response = await axios.get("http://localhost:3007/api/posts/" + spotId);
-    if (response) {
-      return response.data;
-    }
-  } catch (error) {
-    console.log("Error getting posts: " + error);
-  }
-}
-
 
 async function updatePosts(obj) {
   try {
@@ -144,6 +133,5 @@ const AxiosPosts = {
   updatePostsDislikes,
   updatePostsLikesRemove,
   updatePostsDislikesRemove,
- getAPostBySpotId,
 };
 export default AxiosPosts;

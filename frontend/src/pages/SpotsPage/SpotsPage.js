@@ -13,7 +13,7 @@ const SpotsPage = () => {
   const [update, setUpdate] = useState(false);
   const [hidden, setHidden] = useState(false);
   const [singleSpot, setSingleSpot] = useState();
-  const [postList, setPostList] = useState([]);
+
   const [freshUser, setFreshUser] = useState();
 
   async function setUser(userId) {
@@ -37,18 +37,21 @@ const SpotsPage = () => {
   }
 
   return (
-    <div>
+    <div className="spotsPageBackground">
       {hidden === false && (
         <div>
-          <ErrorBoundary>
-            <DisplaySpots
-              spotList={spotList}
-              setHidden={setHidden}
-              setSingleSpot={setSingleSpot}
-              hidden={hidden}
-              singleSpot={singleSpot}
-            />
-          </ErrorBoundary>
+          <div className="parksHeader">Welcome, {user.name}! </div>
+          <div>
+            <ErrorBoundary>
+              <DisplaySpots
+                spotList={spotList}
+                setHidden={setHidden}
+                setSingleSpot={setSingleSpot}
+                hidden={hidden}
+                singleSpot={singleSpot}
+              />
+            </ErrorBoundary>
+          </div>
         </div>
       )}
       {hidden && (
@@ -57,8 +60,6 @@ const SpotsPage = () => {
           setHidden={setHidden}
           handleClick={handleClick}
           userId={userId}
-          setPostList={setPostList}
-          postList={postList}
           freshUser={freshUser}
           user={user}
         />

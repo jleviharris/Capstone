@@ -17,6 +17,8 @@ const DisplayUsers = ({
 }) => {
   const { user } = useContext(AuthContext);
   const [updatedUsers, setUpdatedUsers] = useState([]);
+  const [arrow, setArrow] = useState("arrow_downward");
+  const [checkedUsers, setCheckedUsers] = useState(false);
 
   let allLists = [userId];
   allLists.push.apply(allLists, userFriendsList);
@@ -77,53 +79,77 @@ const DisplayUsers = ({
   function handleClickHidden() {
     setHidden(true);
   }
+  function handleCheckedUsers() {
+    if (checkedUsers) {
+      setCheckedUsers(false);
+    } else if (!checkedUsers) {
+      setCheckedUsers(true);
+    }
+  }
+  function handleArrow() {
+    if (arrow === "arrow_upward") {
+      setArrow("arrow_downward");
+    } else if (arrow === "arrow_downward") {
+      setArrow("arrow_upward");
+    }
+  }
 
   return (
-    <div className="postlist">
-      <div className="postlistHead">
+    <div className="friendList">
+      <div className="friendListHead">
         <div>Add Friends</div>
         <button
           onClick={() => {
             filterUsers(userList);
+            handleCheckedUsers();
+            handleArrow();
           }}
         >
-          <span className="material-symbols-outlined">arrow_downward</span>
+          <span className="material-symbols-outlined">{arrow}</span>
         </button>
       </div>
-      {updatedUsers
-        .map((user, index) => {
-          return (
-            <div key={index} className="postbody">
-              <button
-                className="my-post-button"
-                onClick={() => {
-                  handleClickHidden();
-                  setSingleUser(user);
-                }}
-              >
-                {" "}
-                <div className="name-container">{user.name}</div>
-                <p className="post">About:</p>
-                <div className="name-container">{user.aboutMe}</div>
-                <p className="post">Stance:</p>
-                <div className="name-container">{user.stance}</div>
-              </button>
-
-              <button
-                onClick={() => {
-                  // The user logged in "userId"
-                  // The user being sent a friend request "user._id"
-                  sendFriendRequest(user._id, { friendRequests: userId });
-                  addToPendingFriends(userId, { pendingFriends: user._id });
-                  handleClick();
-                }}
-              >
-                Send Request
-              </button>
-            </div>
-          );
-        })
-        .reverse()}
+      {checkedUsers && (
+        <div className="friendMapList">
+          {updatedUsers
+            .map((user, index) => {
+              return (
+                <div key={index} className="friendBody">
+                  <button className="addFriendButtonLink"
+                    onClick={() => {
+                      handleClickHidden();
+                      setSingleUser(user);
+                    }}
+                  >
+                    {" "}
+                    <div className="nameAndButton">
+                      <button
+                        onClick={() => {
+                          // The user logged in "userId"
+                          // The user being sent a friend request "user._id"
+                          sendFriendRequest(user._id, {
+                            friendRequests: userId,
+                          });
+                          addToPendingFriends(userId, {
+                            pendingFriends: user._id,
+                          });
+                          handleClick();
+                        }}
+                      >
+                        Send Request
+                      </button>{" "}
+                      <div className="name-container">{user.name}</div>
+                    </div>
+                    <p className="titles">About:</p>
+                    <div className="name-container">{user.aboutMe}</div>
+                    <p className="titles">Stance:</p>
+                    <div className="name-container">{user.stance}</div>
+                  </button>
+                </div>
+              );
+            })
+            .reverse()}
+        </div>
+      )}
     </div>
   );
 };

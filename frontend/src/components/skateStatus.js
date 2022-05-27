@@ -30,6 +30,7 @@ const SetSkateStatus = ({ userId, freshUser, singleSpot }) => {
   const [checkOutTime, setCheckOutTime] = useState();
   const [skateTime, setSkateTime] = useState("");
   const [hidden, setHidden] = useState(false);
+
   const [title, setTitle] = useState("Set Skate Time");
   const [checkInTitle, setCheckInTitle] = useState("Check In");
   const [checkOutTitle, setCheckOutTitle] = useState("Check Out");
@@ -100,6 +101,7 @@ const SetSkateStatus = ({ userId, freshUser, singleSpot }) => {
         // updateCheckOutTime(userId, {checkOutTime: ""});
         // updateSkateTime(userId, {skateTime: ""});
         setSkateInactive("inactiveOn");
+        // handleUpdate();
       } else if (skateActive === "activeOff") {
         setSkateActive("activeOn");
         setUsersSkateStatus(userId, { skateStatus: "Active" });
@@ -155,11 +157,6 @@ const SetSkateStatus = ({ userId, freshUser, singleSpot }) => {
       );
     } else return <div> Not Active</div>;
   }
-  // function submitForm() {
-  //   let tempSelectInput = document.getElementById("skateTimeDropdown").value;
-  //   let selectedInput = tempSelectInput.value;
-  //   console.log(selectedInput);
-  // }
 
   return (
     <div className="spotSkateStatus">
@@ -181,7 +178,7 @@ const SetSkateStatus = ({ userId, freshUser, singleSpot }) => {
                 <button
                   onClick={() => {
                     setTitle("30 Minutes");
-                    handleHiddenFalse();
+                    handleHiddenTrue();
                     updateSkateTime(userId, { skateTime: "30 Minutes" });
                     refreshPage();
                   }}

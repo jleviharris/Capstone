@@ -11,23 +11,13 @@ const ProfilePage = (props) => {
   const { user } = useContext(AuthContext);
 
   return (
-    <div>
+    <div className="profilePageBackground">
       <h1 className="profile-name">Profile for {user.name}</h1>
 
       <div className="profile">
-        <Row className="body">
-          <Col>
             <Name />
-          </Col>
-
-          <Col>
             <AboutMe />
-          </Col>
-
-          <Col>
-            <Stance />
-          </Col>
-        </Row>
+            <Stance /> 
       </div>
     </div>
   );

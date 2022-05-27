@@ -39,7 +39,7 @@ const Navbar = () => {
           }}
         >
           <b>
-            Skate <span style={{ color: "#f709a0" }}>Status</span>
+            SK8 <span style={{ color: "#f709a0" }}>Status</span>
           </b>
         </Link>
       </p>
@@ -65,12 +65,6 @@ menu
          <li>
            {user && (
              <button onClick={() => {navigate("/myPosts");handleClickFalse()}}>My Reviews</button>
-           )}
-         </li>
-         
-         <li>
-           {user && (
-             <button onClick={() => {navigate("/feedPage");handleClickFalse()}}>Friends Feed</button>
            )}
          </li>
          <li>

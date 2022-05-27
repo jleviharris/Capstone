@@ -3,11 +3,9 @@ import { Routes, Route } from "react-router-dom";
 import "./App.css";
 
 // Pages Imports
-import HomePage from "./pages/HomePage/HomePage";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import RegisterPage from "./pages/RegisterPage/RegisterPage";
 import MyPosts from "./pages/MyPosts/myPosts";
-import FeedPage from "./pages/FeedPage/feedPage";
 import SpotsPage from "./pages/SpotsPage/SpotsPage";
 import FriendsPage from "./pages/Friends/friendsPage";
 
@@ -21,7 +19,7 @@ import ProfilePage from "./pages/ProfilePage/ProfilePage";
 
 function App() {
   return (
-    <div>
+    <div className="fullPage">
       <Navbar />
       <Routes>
         <Route
@@ -37,7 +35,6 @@ function App() {
         <Route path="/spots" element={<SpotsPage />} />
         <Route path="/myPosts" element={<MyPosts />} />
         <Route path="/profile" element={<ProfilePage />} />
-        <Route path="/feedPage" element={<FeedPage />} />
         <Route path="/friendsPage" element={<FriendsPage />} />
       </Routes>
     </div>

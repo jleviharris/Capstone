@@ -22,13 +22,15 @@ const DisplaySpots = ({ spotList, setHidden, setSingleSpot, singleSpot }) => {
               >
                 {" "}
                 <div className="name-container">{spot.name}</div>
-                <br />
-                Vert: {spot.vert}
-                <br />
-                Street: {spot.street}
-                <br />
-                <p className="post">Address:</p>
-                <div className="body-container">{spot.address}</div>
+                <div className="attributesAndAddress">
+                  <div className="attributes">
+                    Vert: {spot.vert}
+                    <br />
+                    Street: {spot.street}
+                    <br />
+                  </div>
+                  <div className="body-container">{spot.address}</div>
+                </div>
               </button>
 
               {/* <CustomButtonSpots singleSpot={singleSpot} /> */}

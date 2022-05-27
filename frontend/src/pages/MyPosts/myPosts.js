@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
+import "../../components/Posts/MyPost.css";
 import CreatePost from "../../components/Posts/createPosts";
 import DisplayPosts from "../../components/Posts/displayPosts";
 import AxiosPosts from "../../Routes/postRoutes";
@@ -31,7 +32,7 @@ const MyPosts = () => {
   }
 
   return (
-    <div>
+    <div className="myReviewsPage">
       {hidden === false && (
         <div>
           {/* <CreatePost userId={userId} handleClick={handleClick} name={name} /> */}

@@ -14,8 +14,6 @@ const DisplaySingleSpot = ({
   singleSpot,
   handleClick,
   userId,
-  setPostList,
-  postList,
   freshUser,
   user,
   setHidden,
@@ -24,7 +22,7 @@ const DisplaySingleSpot = ({
   const spotId = singleSpot._id;
   const [update, setUpdate] = useState(false);
   const [singlePost, setSinglePost] = useState();
-
+  const [postList, setPostList] = useState([]);
   const [latitude, setLatitude] = useState(parseFloat(singleSpot.lat));
   const [longitude, setLongitude] = useState(parseFloat(singleSpot.lng));
 
@@ -47,8 +45,8 @@ const DisplaySingleSpot = ({
     const [map, setMap] = useState(null);
 
     const onLoad = useCallback(function callback(map) {
-      const bounds = new window.google.maps.LatLngBounds(center);
-      map.fitBounds(bounds);
+      // const bounds = new window.google.maps.LatLngBounds(center);
+      // map.fitBounds(bounds);
       setMap(map);
     }, []);
 
@@ -60,9 +58,12 @@ const DisplaySingleSpot = ({
       <GoogleMap
         mapContainerStyle={containerStyle}
         center={center}
-        zoom={12}
+        zoom={18}
+        mapTypeId={"satellite"}
         onLoad={onLoad}
         onUnmount={onUnmount}
+        tilt={45}
+        labels={true}
       >
         <Marker position={center} />
         <></>
@@ -74,16 +75,23 @@ const DisplaySingleSpot = ({
 
   return (
     <div className="singleSpotFull">
-      <button className="closeButton" onClick={() => setHidden(false)}>
-        X
-      </button>
       <div className="singleSpot">
-        {singleSpot.name} <br />
-        {singleSpot.address}
+        <div className="singleSpotName">
+          {singleSpot.name}{" "}
+          <button className="closeButton" onClick={() => setHidden(false)}>
+            X
+          </button>
+        </div>
         <br />
-        Vert: {singleSpot.vert}
-        <br />
-        Street: {singleSpot.street}
+        <div className="parkAttributes">
+          Vert: {singleSpot.vert}
+          <br />
+          Street: {singleSpot.street}
+          <br />
+          <br />
+        </div>
+        <div className="singleSpotAddress"> {singleSpot.address}</div>
+
         {/* <CustomButtonSpots singleSpot={singleSpot} /> */}
       </div>
       <div className="singleSpotSkateStatus">
@@ -95,44 +103,38 @@ const DisplaySingleSpot = ({
         />
       </div>
       <div>{MyComponent()}</div>
-      <h3>Reviews</h3>
-      <div>
-        <CreatePostSpot
-          spot={singleSpot}
-          userId={userId}
-          spotId={spotId}
-          handleClick={handleClick}
-        />
-      </div>
-      {/* <DisplayPostsSpot /> */}
-
-      <div>
-        {hidden === false && (
-          <div>
-            <ErrorBoundary>
-              <DisplayPostsSpot
-                spotId={spotId}
-                setPostList={setPostList}
-                postList={postList}
-                singlePost={singlePost}
-                setSinglePost={setSinglePost}
-                update={update}
-                setUpdate={setUpdate}
-                hidden={hidden}
-                setHidden={setHidden}
-              />
-            </ErrorBoundary>
-          </div>
-        )}
-        {hidden && (
-          <DisplaySinglePost
-            singlePost={singlePost}
-            setHidden={setHidden}
-            handleClick={handleClick}
+      <div className="reviews">
+        <h3>Reviews</h3>
+        <div>
+          <CreatePostSpot
+            spot={singleSpot}
             userId={userId}
+            spotId={spotId}
+            handleClick={handleClick}
           />
-        )}
+        </div>
       </div>
+
+      <DisplayPostsSpot
+        spotId={spotId}
+        setPostList={setPostList}
+        postList={postList}
+        singlePost={singlePost}
+        setSinglePost={setSinglePost}
+        update={update}
+        setUpdate={setUpdate}
+        hidden={hidden}
+        setHidden={setHidden}
+      />
+
+      {hidden && (
+        <DisplaySinglePost
+          singlePost={singlePost}
+          setHidden={setHidden}
+          handleClick={handleClick}
+          userId={userId}
+        />
+      )}
     </div>
   );
 };

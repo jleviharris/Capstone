@@ -10,40 +10,44 @@ const DisplayPostsSpot = ({
   setUpdate,
   singlePost,
   setSinglePost,
-  postList,
-  setPostList,
+  // postList,
+  // setPostList,
   hidden,
   setHidden,
+  singleSpot,
 }) => {
   useEffect(() => {
     getAllPosts();
+    console.log(spotId);
   }, []);
 
   function handleClick() {
     setUpdate(!update);
   }
+  const [postList, setPostList] = useState([]);
 
   async function getAllPosts() {
     let posts = await AxiosPosts.getAllPosts();
     if (posts) {
-      let newList = [];
+      let tempList = [];
       for (let i = 0; i < posts.length; i++) {
         if (posts[i].spotId === spotId) {
-          newList.push(posts[i]);
+          tempList.push(posts[i]);
         }
       }
-      setPostList(newList);
-    } else setPostList({ Object: "No Posts" });
+      setPostList(tempList);
+      console.log(postList);
+    }
   }
 
   return (
-    <div className="postlist">
+    <div className="allReviewsList">
       {postList
         .map((post, index) => {
           return (
-            <div key={index} className="postbody">
+            <div key={index} className="allReviewsBody">
               <button
-                className="my-post-button"
+                className="all-reviews-button"
                 onClick={() => {
                   handleClick(post);
                   setSinglePost(post);
@@ -51,10 +55,10 @@ const DisplayPostsSpot = ({
                 }}
               >
                 {" "}
-                <div className="name-container">{post.name}</div>
+                <div className="name-container-posts">{post.name}</div>
+                <div className="name-container-posts">{post.time}</div>
                 <br />
-                <p className="post">Post:</p>
-                <div className="body-container">{post.body}</div>
+                <div className="postBody-container">{post.body}</div>
               </button>
             </div>
           );

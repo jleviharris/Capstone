@@ -7,7 +7,7 @@ import ErrorBoundary from "../ErrorBoundary";
 import DisplayCurrentFriends from "../../components/Friends/displayCurrentFriends";
 import DisplayFriendRequests from "../../components/Friends/displayFriendRequests";
 import DisplaySentFriendRequests from "../../components/Friends/displaySentFriendRequests";
-
+import("../../components/Friends/friends.css");
 const FriendsPage = () => {
   const { user } = useContext(AuthContext);
   const userId = user._id || null;
@@ -62,7 +62,7 @@ const FriendsPage = () => {
   return (
     <div>
       {hidden === false && (
-        <div>
+        <div className="friendsFullPage">
           <ErrorBoundary>
             <DisplayCurrentFriends
               userFriendsList={userFriendsList}
@@ -102,12 +102,7 @@ const FriendsPage = () => {
         </div>
       )}
       {hidden && (
-        <DisplaySingleUser
-          singleUser={singleUser}
-          setHidden={setHidden}
-          
-         
-        />
+        <DisplaySingleUser singleUser={singleUser} setHidden={setHidden} />
       )}
     </div>
   );

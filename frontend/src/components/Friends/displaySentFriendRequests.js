@@ -34,8 +34,8 @@ const DisplaySentFriendRequests = ({
     setFriendObjList(newList);
   }
   return (
-    <div className="postlist">
-      <div className="postlistHead">
+    <div className="friendList">
+      <div className="friendListHead">
         <div>Pending Friends</div>
         <button
           onClick={() => {
@@ -48,16 +48,16 @@ const DisplaySentFriendRequests = ({
       {friendObjList
         .map((user, index) => {
           return (
-            <div key={index} className="postbody">
+            <div key={index} className="friendBody">
               <button
-                className="my-post-button"
+                className="my-friend-button"
                 onClick={() => {
                   handleClick(user);
                   setSingleUser(user);
                 }}
               >
                 {" "}
-                <div className="name-container">{user.name}</div>
+                <div className="friendName-container">{user.name}</div>
               </button>
             </div>
           );
