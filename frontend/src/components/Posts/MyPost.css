@@ -30,7 +30,6 @@ textarea {
 
 .postlist {
   display: flex;
-
   flex-direction: column;
   border-radius: 7px;
   width: 95%;
@@ -39,6 +38,19 @@ textarea {
   justify-content: center;
   align-items: center;
   margin-bottom: 1rem;
+}
+.reviewsList {
+  display: flex;
+  flex-direction: column;
+  border-radius: 7px;
+  width: 95%;
+  /* height: auto; */
+  margin: auto;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1rem;
+  overflow-y: scroll;
+  max-height: 80vh;
 }
 .allPostList {
   display: flex;
@@ -68,7 +80,7 @@ textarea {
   color: white;
   display: flex;
   justify-content: center;
-  border: 2px solid rgb(247, 9, 160);
+  border: 2px solid white;
   /* border-radius: 12px; */
   margin-top: 1em;
   flex-direction: column;
@@ -117,14 +129,13 @@ textarea {
 .parksHeader {
   width: auto;
   text-align: right;
-  /* font-size: xxx-large; */
   color: #f708a0;
-  border-bottom: 2px solid black;
+  border: 1px solid white;
   margin: 20px;
   font-weight: 100;
   background: black;
-  /* margin: 2rem 8rem 1rem 8rem; */
-  font-size: 1.5rem;
+  font-size: 2rem;
+  padding: 0.5rem;
 }
 
 .postbody {
@@ -142,13 +153,41 @@ textarea {
 
 .my-post-button {
   background-color: #212529;
-  border: 3px double black;
+  border: 2px solid white;
   color: #c4c8d8;
   font-size: 1rem;
   font-family: inherit;
   width: 100%;
   margin-bottom: 1.5rem;
   margin: top 1.5rem;
+  border-radius: 10px;
+}
+.delete-post-button {
+  background-color: #212529;
+  border: 3px double black;
+  color: #c4c8d8;
+  font-size: 4rem;
+  font-family: inherit;
+  width: 90%;
+  margin-bottom: 1rem;
+  margin-top: 1.5rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  border-radius: 10px;
+}
+.delete-body {
+  text-align: center;
+  width: 100%;
+}
+
+.my-review-button {
+  border: 3px double black;
+  color: #c4c8d8;
+  font-size: 1rem;
+  font-family: inherit;
+  width: 100%;
+  margin-bottom: 1.5rem;
+  margin-top: 1.5rem;
   border-radius: 10px;
 }
 .all-posts-button {
@@ -232,7 +271,7 @@ textarea {
   width: 50%;
   flex-direction: column;
   align-items: center;
-  border: 2px solid rgb(247, 9, 160);
+  border: 2px solid white;
   border-radius: 15px;
   padding-bottom: 1rem;
 }
@@ -241,9 +280,29 @@ textarea {
   margin-bottom: 0.5em;
   text-align: center;
   text-transform: uppercase;
-
   color: white;
   font-size: larger;
+}
+.name-container-reviews {
+  margin-bottom: 0.5em;
+  text-align: left;
+  text-transform: uppercase;
+  font-size: larger;
+  color: black;
+}
+.spotName-container-reviews {
+  margin-bottom: 0.5em;
+  text-align: center;
+  text-transform: uppercase;
+  font-size: larger;
+  color: black;
+}
+.spotinfo-container-reviews {
+  margin-bottom: 0.5em;
+  text-align: center;
+  text-transform: uppercase;
+  font-size: x-small;
+  color: black;
 }
 .name-container-posts {
   margin-bottom: 0.5em;
@@ -253,7 +312,7 @@ textarea {
   color: black;
 }
 .singleSpotSkateStatus {
-  border: 2px solid rgb(247, 9, 160);
+  border: 2px solid white;
   padding: 10px;
   margin: 2rem 3rem;
   border-radius: 12px;
@@ -271,8 +330,18 @@ textarea {
   text-align: left;
   width: 50%;
   border-right: 1px solid white;
-
-  /* margin: 0; */
+  margin-left: 0.5rem;
+}
+.body-container-reviews {
+  text-align: center;
+  width: 100%;
+  color: black;
+  font-size: large;
+}
+.body-container {
+  text-align: left;
+  width: 50%;
+  border-right: 1px solid white;
 }
 .postBody-container {
   text-align: center;
@@ -300,13 +369,15 @@ textarea {
 
 .delete-post {
   display: flex;
-  justify-content: center;
   border: 1px solid black;
   border-radius: 12px;
   margin-top: 2em;
-
-  padding: 2em;
-  margin: auto;
+  /* padding: 2em; */
+  /* margin: auto; */
+  flex-direction: column-reverse;
+  align-items: flex-end;
+  background: white;
+  color: black;
 }
 .activeOn {
   background-color: #39cc2c;
@@ -374,10 +445,59 @@ textarea {
   margin: 20px 20px;
 }
 .singleSpotAddress {
+  margin-right: 1rem;
   margin-left: 1rem;
   margin-bottom: 1rem;
 }
 .myReviewsPage {
   background: url("../../../../backend/uploads/paolo-nicolello-9CoL-pdhPWM-unsplash\ \(1\).jpg");
   background-size: contain;
+  height: 90vh;
+}
+.singlePostFullPage {
+  height: 100vh;
+}
+.delete-post-fullPage {
+  height: 100vh;
+}
+.homePage {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: url("../../../../backend/uploads/marc-newberry-xKnUnPEUiWA-unsplash.jpg");
+}
+.home-page-park {
+  align-items: center;
+  margin: 1rem;
+}
+.home-page-friends {
+  align-items: center;
+  margin: 1rem;
+}
+.HP-button {
+  color: white;
+  height: 10rem;
+  width: 20rem;
+  background: black;
+  border-radius: 25px;
+  margin-bottom: 4rem;
+  font-size: 2rem;
+  border: 1px solid white;
+}
+.HP-ul {
+  margin-top: 1rem;
+  padding: 0;
+}
+.HP-Header {
+  width: auto;
+  text-align: right;
+  color: #f708a0;
+  border: 1px solid white;
+  margin: 20px;
+  font-weight: 100;
+  background: black;
+  margin-top: 8rem;
+  font-size: 2rem;
+  padding: 0.5rem;
 }

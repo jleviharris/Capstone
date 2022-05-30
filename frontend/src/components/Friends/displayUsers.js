@@ -36,33 +36,6 @@ const DisplayUsers = ({
     console.log(obj);
   }
 
-  // async function filterUsers(users) {
-  //   let newList = [];
-  //   console.log(users);
-  //   for (let i = 0; i < users.length; i++) {
-  //     if (userId !== users[i]._id) {
-  //       if (user.friendsList.length > 0) {
-  //         for (let k = 0; k < user.friendsList.length; k++) {
-  //           if (users[i]._id !== user.friendsList[k]) {
-  //             newList.push(users[i]);
-  //             console.log(newList);
-  //           } else if (user.pendingFriends.length > 0) {
-  //             for (let j = 0; j < user.pendingFriends.length; j++) {
-  //               if (users[i]._id !== user.pendingFriends[j]) {
-  //                 newList.push(users[i]);
-  //                 console.log(newList);
-  //               }
-  //             }
-  //           }
-  //         }
-  //       } else {
-  //         newList.push(users[i]);
-  //       }
-  //     }
-  //   }
-  //   setUpdatedUsers(newList);
-  //   console.log(updatedUsers);
-  // }
   async function filterUsers(users) {
     let newList = [];
     for (let i = 0; i < users.length; i++) {
@@ -93,6 +66,9 @@ const DisplayUsers = ({
       setArrow("arrow_upward");
     }
   }
+  function refreshPage() {
+    window.location.reload(false);
+  }
 
   return (
     <div className="friendList">
@@ -114,12 +90,14 @@ const DisplayUsers = ({
             .map((user, index) => {
               return (
                 <div key={index} className="friendBody">
-                  <button className="addFriendButtonLink"
+                  {/* <button
+                    className="addFriendButtonLink"
                     onClick={() => {
                       handleClickHidden();
                       setSingleUser(user);
                     }}
-                  >
+                  > */}
+                  <div className="friendBody">
                     {" "}
                     <div className="nameAndButton">
                       <button
@@ -133,6 +111,8 @@ const DisplayUsers = ({
                             pendingFriends: user._id,
                           });
                           handleClick();
+                          alert(`Friend request sent`);
+                          refreshPage();
                         }}
                       >
                         Send Request
@@ -143,7 +123,8 @@ const DisplayUsers = ({
                     <div className="name-container">{user.aboutMe}</div>
                     <p className="titles">Stance:</p>
                     <div className="name-container">{user.stance}</div>
-                  </button>
+                    {/* </button> */}
+                  </div>
                 </div>
               );
             })

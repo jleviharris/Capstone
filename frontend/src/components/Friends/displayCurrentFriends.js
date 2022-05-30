@@ -53,6 +53,9 @@ const DisplayCurrentFriends = ({
       setArrow("arrow_upward");
     }
   }
+  function refreshPage() {
+    window.location.reload(false);
+  }
   return (
     <div className="friendList">
       <div className="friendListHead">
@@ -97,7 +100,8 @@ const DisplayCurrentFriends = ({
                           // logged out user "theUser"
                           removeFriend(userId, { friendsList: friend._id });
                           removeFriend(friend._id, { friendsList: userId });
-
+                          refreshPage();
+                          alert(`${friend.name} unfollowed`);
                           console.log(friend);
                         }}
                       >

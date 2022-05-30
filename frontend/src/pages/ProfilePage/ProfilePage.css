@@ -10,6 +10,7 @@
   margin: 1rem;
   background: black;
   color: white;
+  border: 1px solid white;
 }
 .profile h1,
 h3 {
@@ -26,7 +27,7 @@ h3 {
 }
 
 .aboutme-container {
-  border: 1px solid black;
+  border: 1px solid white;
   border-radius: 17px;
   margin-top: 1rem;
   margin-bottom: 1rem;
@@ -35,7 +36,7 @@ h3 {
   color: white;
 }
 .stance-container {
-  border: 1px solid black;
+  border: 1px solid white;
   border-radius: 17px;
   margin-top: 1rem;
   margin-bottom: 1rem;

@@ -4,9 +4,14 @@ import AxiosPosts from "../../Routes/postRoutes";
 import React from "react";
 import { useEffect } from "react";
 
-const DisplaySinglePost = ({ singlePost, setHidden, handleClick, userId, setPostList, postList }) => {
- 
-
+const DisplaySinglePost = ({
+  singlePost,
+  setHidden,
+  handleClick,
+  userId,
+  setPostList,
+  postList,
+}) => {
   useEffect(() => {
     getPosts(userId);
   }, []);
@@ -27,26 +32,33 @@ const DisplaySinglePost = ({ singlePost, setHidden, handleClick, userId, setPost
     click();
     return postId;
   }
-  function setHiddenFalse(){
+  function setHiddenFalse() {
     setHidden(false);
   }
 
   return (
-    <div className="delete-post">
-      {singlePost && singlePost.name} <br />
-      {singlePost.body}
-      {console.log(singlePost.name)}
-      <button
-        className="my-post-button"
-        onClick={() => {
-          if (singlePost.userId === userId) {
-            deleteAPost(singlePost._id);
-          } else alert("Not authorized to delete post");
-        }}
-      >
-        Delete Post
-      </button>
-      <button onClick={()=> {setHiddenFalse()}}>X</button>
+    <div className="delete-post-fullPage">
+      <div className="delete-post">
+        <button
+          className="delete-post-button"
+          onClick={() => {
+            if (singlePost.userId === userId) {
+              deleteAPost(singlePost._id);
+            } else alert("Not authorized to delete post");
+          }}
+        >
+          Delete Post
+        </button>
+        <div className="delete-body"> {singlePost.body}</div>
+
+        <button
+          onClick={() => {
+            setHiddenFalse();
+          }}
+        >
+          X
+        </button>
+      </div>
     </div>
   );
 };

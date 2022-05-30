@@ -40,7 +40,7 @@ const SpotsPage = () => {
     <div className="spotsPageBackground">
       {hidden === false && (
         <div>
-          <div className="parksHeader">Welcome, {user.name}! </div>
+          <div className="parksHeader">Select a park! </div>
           <div>
             <ErrorBoundary>
               <DisplaySpots

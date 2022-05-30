@@ -8,7 +8,7 @@ import RegisterPage from "./pages/RegisterPage/RegisterPage";
 import MyPosts from "./pages/MyPosts/myPosts";
 import SpotsPage from "./pages/SpotsPage/SpotsPage";
 import FriendsPage from "./pages/Friends/friendsPage";
-
+import HomePage from "./pages/HomePage/HomePage";
 // Component Imports
 import Navbar from "./components/NavBar/NavBar";
 import Footer from "./components/Footer/Footer";
@@ -26,7 +26,7 @@ function App() {
           path="/"
           element={
             <PrivateRoute>
-              <SpotsPage />
+              <HomePage />
             </PrivateRoute>
           }
         />

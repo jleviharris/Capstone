@@ -107,7 +107,7 @@ const DisplaySingleSpot = ({
         <h3>Reviews</h3>
         <div>
           <CreatePostSpot
-            spot={singleSpot}
+            singleSpot={singleSpot}
             userId={userId}
             spotId={spotId}
             handleClick={handleClick}
@@ -126,15 +126,6 @@ const DisplaySingleSpot = ({
         hidden={hidden}
         setHidden={setHidden}
       />
-
-      {hidden && (
-        <DisplaySinglePost
-          singlePost={singlePost}
-          setHidden={setHidden}
-          handleClick={handleClick}
-          userId={userId}
-        />
-      )}
     </div>
   );
 };

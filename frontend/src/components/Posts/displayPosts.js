@@ -6,44 +6,36 @@ import { useState } from "react";
 import AxiosSpots from "../../Routes/spotsRoutes";
 
 const DisplayPosts = ({ postList, setHidden, setSinglePost }) => {
-  // const [postsSpot, setPostsSpot] = useState("");
-
-  // async function getSpotFromPost(post) {
-  //   let id = post.spotId;
-  //   let spot = await AxiosSpots.getASpot(id);
-  //   if (spot) {
-  //     setPostsSpot(spot.name);
-  //   } else setPostsSpot("N/A");
-  // }
   function handleClick() {
     setHidden(true);
   }
 
   return (
-    <div className="postlist">
+    <div className="reviewsList">
       {postList
         .map((post, index) => {
-          // console.log(post);
-          // getSpotFromPost(post);
+          // getReviewSpotName(post);
           return (
             <div key={index} className="postbody">
               <button
-                className="my-post-button"
+                className="my-review-button"
                 onClick={() => {
                   handleClick(post);
                   setSinglePost(post);
                 }}
               >
                 {" "}
-                <div className="name-container">{post.name}</div>
-                <br />
+                {/* <div className="name-container-reviews">{post.name}</div>
+                <br /> */}
                 <p className="post">Post:</p>
-                <div className="body-container">{post.body}</div>
+                <div className="body-container-reviews">{post.body}</div>
                 <p className="post">Spot:</p>
-                {/* <div className="body-container">{postsSpot}</div> */}
+                <div className="spotinfo-container-reviews">{post.spotId}</div>
+                <p className="post">Posted:</p>
+                <div className="spotinfo-container-reviews">{post.time}</div>
               </button>
 
-              <CustomButton post={post} />
+              {/* <CustomButton post={post} /> */}
             </div>
           );
         })

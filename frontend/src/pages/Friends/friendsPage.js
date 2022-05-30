@@ -101,9 +101,9 @@ const FriendsPage = () => {
           </ErrorBoundary>
         </div>
       )}
-      {hidden && (
+      {/* {hidden && (
         <DisplaySingleUser singleUser={singleUser} setHidden={setHidden} />
-      )}
+      )} */}
     </div>
   );
 };

@@ -16,27 +16,26 @@ const DisplayPostsSpot = ({
   setHidden,
   singleSpot,
 }) => {
+  const [postList, setPostList] = useState([]);
+
   useEffect(() => {
     getAllPosts();
-    console.log(spotId);
-  }, []);
+  }, [postList]);
 
   function handleClick() {
     setUpdate(!update);
   }
-  const [postList, setPostList] = useState([]);
 
   async function getAllPosts() {
     let posts = await AxiosPosts.getAllPosts();
     if (posts) {
       let tempList = [];
       for (let i = 0; i < posts.length; i++) {
-        if (posts[i].spotId === spotId) {
+        if (posts[i].spotPost === spotId) {
           tempList.push(posts[i]);
         }
       }
       setPostList(tempList);
-      console.log(postList);
     }
   }
 
@@ -49,7 +48,7 @@ const DisplayPostsSpot = ({
               <button
                 className="all-reviews-button"
                 onClick={() => {
-                  handleClick(post);
+                  handleClick();
                   setSinglePost(post);
                   setHidden(true);
                 }}

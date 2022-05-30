@@ -46,12 +46,14 @@ const MyPosts = () => {
         </div>
       )}
       {hidden && (
-        <DisplaySinglePost
-          singlePost={singlePost}
-          setHidden={setHidden}
-          handleClick={handleClick}
-          userId={userId}
-        />
+        <div className="singlePostFullPage">
+          <DisplaySinglePost
+            singlePost={singlePost}
+            setHidden={setHidden}
+            handleClick={handleClick}
+            userId={userId}
+          />
+        </div>
       )}
     </div>
   );
