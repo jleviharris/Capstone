@@ -7,10 +7,9 @@ const postSchema = mongoose.Schema({
   name: { type: String, required: true },
   likes: { type: Array, default: [] },
   dislikes: { type: Array, default: [] },
-  dateAdded: { type: Date, default: Date.now() },
+  time: { type: String, default: "" },
   spotId: { type: String, default: "" },
   spotPost: { type: String, default: "" },
-  time: { type: String, default: "" },
 });
 
 const validatePost = (post) => {
