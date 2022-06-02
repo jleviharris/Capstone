@@ -92,6 +92,22 @@ const DisplayFriendRequests = ({
                         onClick={() => {
                           // the user logged in "userId"
                           // the user that originally sent the friend request "theUser"
+                          removeFromFriendRequests(userId, {
+                            friendRequests: theUser._id,
+                          });
+                          removeFromPendingFriends(theUser._id, {
+                            pendingFriends: userId,
+                          });
+                          refreshPage();
+                          alert(`Friend Request denied`);
+                        }}
+                      >
+                        Deny Friend Request
+                      </button>
+                      <button
+                        onClick={() => {
+                          // the user logged in "userId"
+                          // the user that originally sent the friend request "theUser"
                           acceptFriendRequest(userId, {
                             friendsList: theUser._id,
                           });
@@ -105,6 +121,7 @@ const DisplayFriendRequests = ({
                             pendingFriends: userId,
                           });
                           refreshPage();
+                          alert(`Friend Request accepted`);
                         }}
                       >
                         Accept Friend Request

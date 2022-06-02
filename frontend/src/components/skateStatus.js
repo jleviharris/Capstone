@@ -5,24 +5,6 @@ import bootstrap from "bootstrap";
 import AxiosSkateStatus from "../Routes/skateStatusRoutes";
 import AxiosUsers from "../Routes/userRoutes";
 
-// Blank Slate
-// click like button to active
-// set like button to green
-// take current time save as check in time
-// update check in time
-// create radio button with 30 min incriments
-// take user input save as checkout time
-// update Checkout time
-// take checkout - current time = Skate Time
-// update Skate Time
-
-// done
-// Start from click inactive
-// set red to black
-// set check in time to null
-// set checkout time to null
-// set skatetime to null or zero
-
 const SetSkateStatus = ({ userId, freshUser, singleSpot }) => {
   const [skateActive, setSkateActive] = useState("");
   const [skateInactive, setSkateInactive] = useState("");
@@ -35,10 +17,6 @@ const SetSkateStatus = ({ userId, freshUser, singleSpot }) => {
   const [checkInTitle, setCheckInTitle] = useState("Check In");
   const [checkOutTitle, setCheckOutTitle] = useState("Check Out");
 
-  // const currentTime = Date.now();
-  // const currentTimestamp = currentTime.valueOf();
-  // console.log(currentTime);
-  // console.log(currentTimestamp);
   const current = new Date();
   const date = `${
     current.getMonth() + 1
@@ -70,9 +48,7 @@ const SetSkateStatus = ({ userId, freshUser, singleSpot }) => {
   async function updateCheckInTime(userId, obj) {
     await AxiosUsers.updateCheckInTime(userId, obj);
   }
-  async function updateCheckOutTime(userId, obj) {
-    await AxiosUsers.updateCheckOutTime(userId, obj);
-  }
+
   async function updateSkateTime(userId, obj) {
     await AxiosUsers.updateSkateTime(userId, obj);
   }
@@ -219,6 +195,20 @@ const SetSkateStatus = ({ userId, freshUser, singleSpot }) => {
               <li>
                 <button
                   onClick={() => {
+                    setTitle("3 Hours");
+                    handleHiddenFalse();
+                    updateSkateTime(userId, { skateTime: "3 Hours" });
+                    refreshPage();
+                  }}
+                  className="dropdown-item"
+                  type="button"
+                >
+                  3 Hours
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={() => {
                     setTitle("4 Hours");
                     handleHiddenFalse();
                     updateSkateTime(userId, { skateTime: "4 Hours" });
@@ -247,15 +237,15 @@ const SetSkateStatus = ({ userId, freshUser, singleSpot }) => {
               <li>
                 <button
                   onClick={() => {
-                    setTitle("All Day");
+                    setTitle("8 Hours");
                     handleHiddenFalse();
-                    updateSkateTime(userId, { skateTime: "All Day" });
+                    updateSkateTime(userId, { skateTime: "8 Hours" });
                     refreshPage();
                   }}
                   className="dropdown-item"
                   type="button"
                 >
-                  All Day
+                  8 Hours
                 </button>
               </li>
             </ul>

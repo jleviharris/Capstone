@@ -6,6 +6,7 @@ const DisplaySentFriendRequests = ({
   userSentFriendRequestList,
   setHidden,
   setSingleUser,
+  userId,
 }) => {
   const [friendObjList, setFriendObjList] = useState([]);
   const [usersFriend, setUsersFriend] = useState("");
@@ -13,6 +14,12 @@ const DisplaySentFriendRequests = ({
   const [checkedUsers, setCheckedUsers] = useState(false);
   function handleClick() {
     setHidden(true);
+  }
+  async function removeFromFriendRequests(userId, obj) {
+    await AxiosUsers.removeFromFriendRequests(userId, obj);
+  }
+  async function removeFromPendingFriends(userId, obj) {
+    await AxiosUsers.removeFromPendingFriends(userId, obj);
   }
 
   async function getFriendById(user) {
@@ -79,6 +86,22 @@ const DisplaySentFriendRequests = ({
                   setSingleUser(user);
                 }}
               > */}
+                  <button
+                    onClick={() => {
+                      // the user logged in "userId"
+                      // the user that originally sent the friend request "theUser"
+                      removeFromFriendRequests(user._id, {
+                        friendRequests: userId,
+                      });
+                      removeFromPendingFriends(userId, {
+                        pendingFriends: user._id,
+                      });
+                      alert("Friend Request Canceled");
+                      refreshPage();
+                    }}
+                  >
+                    Cancel Friend Request
+                  </button>
 
                   <div className="friendBody">
                     {" "}

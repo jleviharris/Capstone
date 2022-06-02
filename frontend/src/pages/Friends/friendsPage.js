@@ -97,6 +97,7 @@ const FriendsPage = () => {
               setHidden={setHidden}
               setSingleUser={setSingleUser}
               handleClick={handleClick}
+              userId={userId}
             />
           </ErrorBoundary>
         </div>

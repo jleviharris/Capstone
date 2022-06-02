@@ -35,7 +35,7 @@ const AboutMe = () => {
   return (
     <div>
       <div className="aboutme-container">
-        <h3>ABOUT ME</h3>
+        <h3>About Me</h3>
         <br />
         <p style={{ paddingLeft: "2em" }}>{aboutMe && aboutMe}</p>
         <br />

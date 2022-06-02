@@ -44,13 +44,13 @@ textarea {
   flex-direction: column;
   border-radius: 7px;
   width: 95%;
-  /* height: auto; */
+  /* height: 105vh; */
   margin: auto;
   justify-content: center;
   align-items: center;
-  margin-bottom: 1rem;
+  /* margin-bottom: 1rem; */
   overflow-y: scroll;
-  max-height: 80vh;
+  /* max-height: 110vh; */
 }
 .allPostList {
   display: flex;
@@ -163,10 +163,10 @@ textarea {
   border-radius: 10px;
 }
 .delete-post-button {
-  background-color: #212529;
+  background-color: #d61e17;
   border: 3px double black;
   color: #c4c8d8;
-  font-size: 4rem;
+  font-size: 1rem;
   font-family: inherit;
   width: 90%;
   margin-bottom: 1rem;
@@ -378,6 +378,8 @@ textarea {
   align-items: flex-end;
   background: white;
   color: black;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
 }
 .activeOn {
   background-color: #39cc2c;
@@ -452,7 +454,7 @@ textarea {
 .myReviewsPage {
   background: url("../../../../backend/uploads/paolo-nicolello-9CoL-pdhPWM-unsplash\ \(1\).jpg");
   background-size: contain;
-  height: 90vh;
+  min-height: 90vh;
 }
 .singlePostFullPage {
   height: 100vh;
@@ -500,4 +502,7 @@ textarea {
   margin-top: 8rem;
   font-size: 2rem;
   padding: 0.5rem;
+}
+.closeRegister {
+  align-self: flex-end;
 }

@@ -35,6 +35,7 @@ const MyPosts = () => {
     <div className="myReviewsPage">
       {hidden === false && (
         <div>
+          {/* <div>My Reviews</div> */}
           {/* <CreatePost userId={userId} handleClick={handleClick} name={name} /> */}
           <ErrorBoundary>
             <DisplayPosts

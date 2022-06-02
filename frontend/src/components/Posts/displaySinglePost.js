@@ -47,7 +47,7 @@ const DisplaySinglePost = ({
             } else alert("Not authorized to delete post");
           }}
         >
-          Delete Post
+          Delete Review
         </button>
         <div className="delete-body"> {singlePost.body}</div>
 
