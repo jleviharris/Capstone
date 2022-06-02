@@ -21,9 +21,9 @@ const userSchema = mongoose.Schema({
   dateAdded: { type: Date, default: Date.now() },
   skateStatus: { type: String, default: "Inactive" },
   currentPark: { type: String, default: "" },
-  checkInTime: { type: String },
-  checkOutTime: { type: String },
-  skateTime: { type: String },
+  checkInTime: { type: String, default: "" },
+  checkOutTime: { type: String, default: "" },
+  skateTime: { type: String, default: "" },
 });
 
 userSchema.methods.generateAuthToken = function () {
