@@ -1,0 +1,59 @@
+{
+  "name": "poppers",
+  "version": "0.1.2",
+  "description": "Some little things which usually pop up on your pages.",
+  "main": "./dist/index.js",
+  "module": "./dist/index.esm.js",
+  "browser": "./dist/poppers.min.js",
+  "files": [
+    "dist/"
+  ],
+  "scripts": {
+    "start": "npm run build && open ./examples/index.html && npm run build -- -w",
+    "build": "rollup -c",
+    "prepublishOnly": "npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/boringwong/poppers.git"
+  },
+  "keywords": [
+    "poppers",
+    "popper",
+    "popup",
+    "toast",
+    "dialog",
+    "alert",
+    "confirm",
+    "prompt",
+    "notification"
+  ],
+  "author": "Boring <boring@boring.wang> (https://boring.wang/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/boringwong/poppers/issues"
+  },
+  "homepage": "https://github.com/boringwong/poppers#readme",
+  "devDependencies": {
+    "@babel/core": "^7.1.2",
+    "@babel/plugin-proposal-class-properties": "^7.1.0",
+    "@babel/plugin-proposal-function-bind": "^7.0.0",
+    "@babel/plugin-proposal-object-rest-spread": "^7.0.0",
+    "@babel/preset-env": "^7.1.0",
+    "cssnano": "^4.1.4",
+    "postcss-banner": "^3.0.0",
+    "postcss-import": "^12.0.0",
+    "postcss-preset-env": "^6.0.7",
+    "rollup": "^0.66.2",
+    "rollup-plugin-babel": "^4.0.3",
+    "rollup-plugin-clear": "^2.0.7",
+    "rollup-plugin-commonjs": "^9.1.8",
+    "rollup-plugin-node-resolve": "^3.4.0",
+    "rollup-plugin-postcss": "^1.6.2",
+    "rollup-plugin-uglify": "^6.0.0"
+  },
+  "dependencies": {
+    "@babel/polyfill": "^7.0.0",
+    "dom4": "^2.1.3"
+  }
+}
