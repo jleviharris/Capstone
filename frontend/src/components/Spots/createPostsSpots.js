@@ -4,7 +4,6 @@ import React, { useState, useContext } from "react";
 import AuthContext from "../../context/AuthContext";
 
 import AxiosPosts from "../../Routes/postRoutes";
-import DisplaySingleSpot from "./displaySingleSpot";
 
 const CreatePostSpot = ({ userId, handleClick, spotId, singleSpot }) => {
   const [value, setValue] = useState("");

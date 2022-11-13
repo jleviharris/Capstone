@@ -44,13 +44,10 @@ textarea {
   flex-direction: column;
   border-radius: 7px;
   width: 95%;
-  /* height: 105vh; */
   margin: auto;
   justify-content: center;
   align-items: center;
-  /* margin-bottom: 1rem; */
   overflow-y: scroll;
-  /* max-height: 110vh; */
 }
 .allPostList {
   display: flex;
@@ -81,7 +78,6 @@ textarea {
   display: flex;
   justify-content: center;
   border: 2px solid white;
-  /* border-radius: 12px; */
   margin-top: 1em;
   flex-direction: column;
   align-items: flex-start;
@@ -127,21 +123,20 @@ textarea {
   margin-bottom: 1.5rem;
 }
 .parksHeader {
-  width: auto;
-  text-align: right;
+  width: 100%;
+  text-align: center;
   color: #f708a0;
-  border: 1px solid white;
-  margin: 20px;
+  border: 1px solid black;
+  margin: 0;
+  margin-bottom: 2rem;
   font-weight: 100;
   background: black;
+  margin-top: 0;
   font-size: 2rem;
   padding: 0.5rem;
 }
 
 .postbody {
-  /* border-bottom: 1px solid black; */
-  /* align-items: flex-start;
-  flex-direction: row; */
   width: 100%;
 }
 .allpostbody {
@@ -154,6 +149,7 @@ textarea {
 .my-post-button {
   background-color: #212529;
   border: 2px solid white;
+  box-shadow: 0px 0px 12px black;
   color: #c4c8d8;
   font-size: 1rem;
   font-family: inherit;
@@ -164,6 +160,7 @@ textarea {
 }
 .delete-post-button {
   background-color: #d61e17;
+  box-shadow: 0px 0px 12px black;
   border: 3px double black;
   color: #c4c8d8;
   font-size: 1rem;
@@ -181,14 +178,17 @@ textarea {
 }
 
 .my-review-button {
-  border: 3px double black;
+  border: 1px single black;
+  box-shadow: 0px 0px 12px black;
   color: #c4c8d8;
-  font-size: 1rem;
-  font-family: inherit;
+  /* font-size: 1rem; */
+  /* font-family: inherit; */
   width: 100%;
   margin-bottom: 1.5rem;
   margin-top: 1.5rem;
   border-radius: 10px;
+  /* background: #94cbf0; */
+  cursor: pointer;
 }
 .all-posts-button {
   background-color: #0d6efd08;
@@ -237,7 +237,6 @@ textarea {
 }
 .likeButtonActive {
   color: #f50404;
-  /* box-shadow: 0 5px #666; */
   display: inline-block;
   padding: 2px 2px 2px 2px;
   cursor: pointer;
@@ -256,7 +255,6 @@ textarea {
   text-decoration: none;
   outline: none;
   color: red;
-  /* background-color: #424c68; */
   border: none;
   border-radius: 15px;
   margin: 10px 10px;
@@ -332,11 +330,17 @@ textarea {
   border-right: 1px solid white;
   margin-left: 0.5rem;
 }
+.spotInfoHeader {
+  display: flex;
+  justify-content: space-between;
+  margin: 0.5rem;
+}
 .body-container-reviews {
   text-align: center;
   width: 100%;
   color: black;
   font-size: large;
+  padding: 0.5rem;
 }
 .body-container {
   text-align: left;
@@ -372,23 +376,19 @@ textarea {
   border: 1px solid black;
   border-radius: 12px;
   margin-top: 2em;
-  /* padding: 2em; */
-  /* margin: auto; */
   flex-direction: column-reverse;
   align-items: flex-end;
   background: white;
   color: black;
   margin-left: 0.5rem;
   margin-right: 0.5rem;
+  padding: 0.5rem;
 }
 .activeOn {
   background-color: #39cc2c;
   color: white;
-  /* box-shadow: 0 9px #666; */
-  /* transform: translateY(4px); */
   display: inline-block;
   padding: 2px 2px 2px 2px;
-
   cursor: pointer;
   text-align: center;
   text-decoration: none;
@@ -401,7 +401,6 @@ textarea {
 .activeOff {
   display: inline-block;
   padding: 2px 2px 2px 2px;
-
   cursor: pointer;
   text-align: center;
   text-decoration: none;
@@ -433,8 +432,6 @@ textarea {
 .inactiveOn {
   background-color: #e22d15;
   color: white;
-  /* box-shadow: 0 9px #666; */
-  /* transform: translateY(4px); */
   display: inline-block;
   padding: 2px 5px 5px 5px;
   font-size: 1.25rem;
@@ -479,27 +476,26 @@ textarea {
 }
 .HP-button {
   color: white;
-  height: 10rem;
   width: 20rem;
   background: black;
   border-radius: 25px;
   margin-bottom: 4rem;
-  font-size: 2rem;
   border: 1px solid white;
+  box-shadow: 0px 0px 12px black;
 }
 .HP-ul {
   margin-top: 1rem;
   padding: 0;
 }
 .HP-Header {
-  width: auto;
-  text-align: right;
+  width: 100%;
+  text-align: center;
   color: #f708a0;
-  border: 1px solid white;
-  margin: 20px;
+  border: 1px solid black;
+  margin: 0;
   font-weight: 100;
   background: black;
-  margin-top: 8rem;
+  margin-top: 0;
   font-size: 2rem;
   padding: 0.5rem;
 }

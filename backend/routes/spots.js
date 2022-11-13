@@ -1,5 +1,4 @@
 const { Spot, validateSpot } = require("../models/spot");
-// const admin = require("../middleware/admin");
 const express = require("express");
 const router = express.Router();
 
@@ -42,17 +41,6 @@ router.get("/:spotId", async (req, res) => {
   }
 });
 
-// PUT an existing spot
-// http://localhost:3007/api/spots/:spotId
-// router.put("/:spotId", async (req, res) => {
-//   try {
-//     const spot = await Spot.UpdateOne({ _id: req.params.spottId }, req.body);
-//     if (!spot) return res.status(400).send(`No spot to show!`);
-//     return res.send(spot);
-//   } catch (error) {
-//     return res.status(500).send(`Internal Server Error: ${error}`);
-//   }
-// });
 
 // PUT an existing spot add like
 // http://localhost:3007/api/spot/like/:postId

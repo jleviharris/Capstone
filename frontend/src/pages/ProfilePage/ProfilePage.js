@@ -1,7 +1,7 @@
 import "./ProfilePage.css";
 
-import { Col, Row } from "react-bootstrap";
-import React, { useContext, useEffect, useState } from "react";
+
+import React, { useContext } from "react";
 import Name from "../../components/Name/Name";
 import AboutMe from "../../components/AboutMe/AboutMe";
 import Stance from "../../components/Stance/Stance";

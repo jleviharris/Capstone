@@ -1,6 +1,6 @@
 import "../Friends/friends.css";
 import AxiosUsers from "../../Routes/userRoutes";
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useContext } from "react";
 import FriendSkateStatus from "../friendsSkateStatus";
 import AuthContext from "../../context/AuthContext";
 
@@ -10,12 +10,10 @@ const DisplayCurrentFriends = ({
   setSingleUser,
   userId,
 }) => {
-  const [skateActive, setSkateActive] = useState("");
-  const [skateInactive, setSkateInactive] = useState("");
   const [friendObjList, setFriendObjList] = useState([]);
   const [checkedFriends, setCheckedFriends] = useState(false);
   const [arrow, setArrow] = useState("arrow_downward");
-  const { user } = useContext(AuthContext);
+  // const { user } = useContext(AuthContext);
 
   async function removeFriend(userId, obj) {
     await AxiosUsers.removeFriend(userId, obj);
@@ -89,10 +87,6 @@ const DisplayCurrentFriends = ({
                         <div className="friendName-container">
                           {friend.name}
                         </div>
-                        {/* <p className="post">About:</p>
-                <div className="name-container">{friend.aboutMe}</div>
-                <p className="post">Stance:</p>
-                <div className="name-container">{friend.stance}</div> */}
                       </button>{" "}
                       <button
                         onClick={() => {

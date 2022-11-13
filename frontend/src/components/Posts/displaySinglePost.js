@@ -10,7 +10,6 @@ const DisplaySinglePost = ({
   handleClick,
   userId,
   setPostList,
-  postList,
 }) => {
   useEffect(() => {
     getPosts(userId);

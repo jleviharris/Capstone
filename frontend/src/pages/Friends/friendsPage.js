@@ -2,7 +2,6 @@ import React, { useContext, useEffect, useState } from "react";
 import AuthContext from "../../context/AuthContext";
 import AxiosUsers from "../../Routes/userRoutes";
 import DisplayUsers from "../../components/Friends/displayUsers";
-import DisplaySingleUser from "../../components/Friends/displaySingleUser";
 import ErrorBoundary from "../ErrorBoundary";
 import DisplayCurrentFriends from "../../components/Friends/displayCurrentFriends";
 import DisplayFriendRequests from "../../components/Friends/displayFriendRequests";
@@ -102,9 +101,6 @@ const FriendsPage = () => {
           </ErrorBoundary>
         </div>
       )}
-      {/* {hidden && (
-        <DisplaySingleUser singleUser={singleUser} setHidden={setHidden} />
-      )} */}
     </div>
   );
 };

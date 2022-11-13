@@ -1,21 +1,16 @@
-import "../Posts/MyPost.css";
-
 import React, { useState } from "react";
+import "../Posts/MyPost.css";
 import AxiosUsers from "../../Routes/userRoutes";
-import { useEffect, useContext } from "react";
-import AuthContext from "../../context/AuthContext";
 
 const DisplayUsers = ({
   userList,
   setHidden,
-  setSingleUser,
   userId,
   handleClick,
   userFriendRequestList,
   userSentFriendRequestList,
   userFriendsList,
 }) => {
-  const { user } = useContext(AuthContext);
   const [updatedUsers, setUpdatedUsers] = useState([]);
   const [arrow, setArrow] = useState("arrow_downward");
   const [checkedUsers, setCheckedUsers] = useState(false);
@@ -47,10 +42,6 @@ const DisplayUsers = ({
     }
 
     setUpdatedUsers(newList);
-  }
-
-  function handleClickHidden() {
-    setHidden(true);
   }
   function handleCheckedUsers() {
     if (checkedUsers) {
@@ -90,13 +81,6 @@ const DisplayUsers = ({
             .map((user, index) => {
               return (
                 <div key={index} className="friendBody">
-                  {/* <button
-                    className="addFriendButtonLink"
-                    onClick={() => {
-                      handleClickHidden();
-                      setSingleUser(user);
-                    }}
-                  > */}
                   <div className="friendBody">
                     {" "}
                     <div className="nameAndButton">
@@ -123,7 +107,6 @@ const DisplayUsers = ({
                     <div className="name-container">{user.aboutMe}</div>
                     <p className="titles">Stance:</p>
                     <div className="name-container">{user.stance}</div>
-                    {/* </button> */}
                   </div>
                 </div>
               );

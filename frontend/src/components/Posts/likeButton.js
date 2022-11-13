@@ -44,8 +44,6 @@ const CustomButton = ({ post }) => {
       return obj;
     }
 
-    let likes = "likes";
-    let dislikes = "dislikes";
     if (event.target.id === "like") {
       if (buttonClass === "likeButton") {
         setButtonClass("likeButtonActive");

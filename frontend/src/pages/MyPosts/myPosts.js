@@ -1,6 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
 import "../../components/Posts/MyPost.css";
-import CreatePost from "../../components/Posts/createPosts";
 import DisplayPosts from "../../components/Posts/displayPosts";
 import AxiosPosts from "../../Routes/postRoutes";
 import AuthContext from "../../context/AuthContext";
@@ -35,8 +34,6 @@ const MyPosts = () => {
     <div className="myReviewsPage">
       {hidden === false && (
         <div>
-          {/* <div>My Reviews</div> */}
-          {/* <CreatePost userId={userId} handleClick={handleClick} name={name} /> */}
           <ErrorBoundary>
             <DisplayPosts
               postList={postList}

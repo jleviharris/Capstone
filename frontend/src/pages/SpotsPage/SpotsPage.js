@@ -7,6 +7,7 @@ import DisplaySingleSpot from "../../components/Spots/displaySingleSpot";
 import AxiosUsers from "../../Routes/userRoutes";
 
 const SpotsPage = () => {
+  
   const [spotList, setSpotList] = useState([]);
   const { user } = useContext(AuthContext);
   const userId = user._id || null;

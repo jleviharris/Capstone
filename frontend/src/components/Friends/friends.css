@@ -35,16 +35,7 @@
   font-size: 1rem;
   font-family: inherit;
 }
-/* .friendName-container {
-  background-color: #212529;
-  border: 3px double black;
-  color: #c4c8d8;
-  font-size: 1rem;
-  font-family: inherit;
-  width: 100%;
-  margin-bottom: 0.5rem;
-  border-radius: 10px;
-} */
+
 
 .my-friend-button:hover {
   cursor: pointer;

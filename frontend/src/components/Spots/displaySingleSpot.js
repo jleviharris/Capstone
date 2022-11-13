@@ -1,13 +1,9 @@
 import "../Posts/MyPost.css";
 import React, { useState, useCallback, useEffect } from "react";
-import CustomButtonSpots from "./CustomButtonSpots";
 import CreatePostSpot from "./createPostsSpots";
 import DisplayPostsSpot from "./displayPostsSpots";
-import ErrorBoundary from "../../pages/ErrorBoundary";
-import DisplaySinglePost from "../Posts/displaySinglePost";
 import { useJsApiLoader, GoogleMap, Marker } from "@react-google-maps/api";
 import SetSkateStatus from "../skateStatus";
-import AxiosUsers from "../../Routes/userRoutes";
 import API_KEY from "../../config/default";
 
 const DisplaySingleSpot = ({
@@ -45,8 +41,6 @@ const DisplaySingleSpot = ({
     const [map, setMap] = useState(null);
 
     const onLoad = useCallback(function callback(map) {
-      // const bounds = new window.google.maps.LatLngBounds(center);
-      // map.fitBounds(bounds);
       setMap(map);
     }, []);
 
@@ -92,7 +86,6 @@ const DisplaySingleSpot = ({
         </div>
         <div className="singleSpotAddress"> {singleSpot.address}</div>
 
-        {/* <CustomButtonSpots singleSpot={singleSpot} /> */}
       </div>
       <div className="singleSpotSkateStatus">
         <SetSkateStatus

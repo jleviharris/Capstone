@@ -8,13 +8,8 @@ const DisplayPostsSpot = ({
   spotId,
   update,
   setUpdate,
-  singlePost,
   setSinglePost,
-  // postList,
-  // setPostList,
-  hidden,
   setHidden,
-  singleSpot,
 }) => {
   const [postList, setPostList] = useState([]);
 

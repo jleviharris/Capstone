@@ -4,13 +4,8 @@ import "../components/Friends/friends.css";
 import React, { useState, useEffect } from "react";
 
 const FriendSkateStatus = ({ friend }) => {
-  const [update, setUpdate] = useState(false);
   const [skateActive, setSkateActive] = useState("");
   const [skateInactive, setSkateInactive] = useState("");
-
-  // const { user } = useContext(AuthContext);
-  // const userId = user._id || null;
-  // console.log(user.skateStatus);
 
   useEffect(() => {
     setButtons();

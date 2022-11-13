@@ -10,7 +10,7 @@ const CustomButtonSpots = ({ singleSpot }) => {
   const [numOfDislikes, setNumOfDislikes] = useState(null);
   const { user } = useContext(AuthContext);
   const userId = user._id || null;
-  // const spotId = singleSpot._id || null;
+
 
   useEffect(() => {
     console.log(singleSpot);
@@ -46,8 +46,6 @@ const CustomButtonSpots = ({ singleSpot }) => {
       return obj;
     }
 
-    let likes = "likes";
-    let dislikes = "dislikes";
     if (event.target.id === "like") {
       if (buttonClass === "likeButton") {
         setButtonClass("likeButtonActive");

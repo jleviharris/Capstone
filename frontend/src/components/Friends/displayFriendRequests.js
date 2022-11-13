@@ -7,8 +7,6 @@ const DisplayFriendRequests = ({
   userFriendRequestList,
   setHidden,
   setSingleUser,
-  usersFriendRequest,
-  setUsersFriendRequest,
   userId,
 }) => {
   const [arrow, setArrow] = useState("arrow_downward");
@@ -90,8 +88,8 @@ const DisplayFriendRequests = ({
                     <div className="nameAndButton">
                       <button
                         onClick={() => {
-                          // the user logged in "userId"
-                          // the user that originally sent the friend request "theUser"
+                          //  logged in = "userId"
+                          //  sent the friend request = "theUser"
                           removeFromFriendRequests(userId, {
                             friendRequests: theUser._id,
                           });

@@ -5,16 +5,14 @@ import React, { useState } from "react";
 const DisplaySentFriendRequests = ({
   userSentFriendRequestList,
   setHidden,
-  setSingleUser,
   userId,
 }) => {
   const [friendObjList, setFriendObjList] = useState([]);
   const [usersFriend, setUsersFriend] = useState("");
   const [arrow, setArrow] = useState("arrow_downward");
   const [checkedUsers, setCheckedUsers] = useState(false);
-  function handleClick() {
-    setHidden(true);
-  }
+ 
+ 
   async function removeFromFriendRequests(userId, obj) {
     await AxiosUsers.removeFromFriendRequests(userId, obj);
   }
@@ -79,13 +77,6 @@ const DisplaySentFriendRequests = ({
             .map((user, index) => {
               return (
                 <div key={index} className="friendBody">
-                  {/* <button
-                className="my-friend-button"
-                onClick={() => {
-                  handleClick(user);
-                  setSingleUser(user);
-                }}
-              > */}
                   <button
                     onClick={() => {
                       // the user logged in "userId"
@@ -110,7 +101,6 @@ const DisplaySentFriendRequests = ({
                     <div className="name-container">{user.aboutMe}</div>
                     <p className="titles">Stance:</p>
                     <div className="name-container">{user.stance}</div>
-                    {/* </button> */}
                   </div>
                 </div>
               );

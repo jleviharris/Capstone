@@ -1,7 +1,8 @@
 import React, { useContext } from "react";
 import AuthContext from "../../context/AuthContext";
 import useCustomForm from "../../hooks/useCustomForm";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
+import "../LoginPage/LoginPage.css";
 
 const RegisterPage = () => {
   const navigate = useNavigate();
@@ -22,15 +23,7 @@ const RegisterPage = () => {
       <div className="container-0">
         <div className="loginForm">
           <form className="form" onSubmit={handleSubmit}>
-            <button
-              className="closeRegister"
-              onClick={() => {
-                navigate("/login");
-              }}
-            >
-              X
-            </button>
-            <label>
+            <label className="nameLabel">
               Name:{" "}
               <input
                 type="text"
@@ -72,7 +65,12 @@ const RegisterPage = () => {
                 onChange={handleInputChange}
               />
             </label>
-            <button onClick={handleSubmit}>Register</button>
+            <button className="registerBttn" onClick={handleSubmit}>
+              Register
+            </button>
+            <div className="loginLink">
+              Have and account already? <Link to="/login">Log in</Link>
+            </div>
           </form>
         </div>
       </div>

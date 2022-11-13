@@ -1,16 +1,12 @@
-import "../components/Posts/MyPost.css";
 
 import React, { useState, useEffect } from "react";
-import bootstrap from "bootstrap";
+import "../components/Posts/MyPost.css";
 import AxiosSkateStatus from "../Routes/skateStatusRoutes";
 import AxiosUsers from "../Routes/userRoutes";
 
 const SetSkateStatus = ({ userId, freshUser, singleSpot }) => {
   const [skateActive, setSkateActive] = useState("");
   const [skateInactive, setSkateInactive] = useState("");
-  const [checkInTime, setCheckInTime] = useState();
-  const [checkOutTime, setCheckOutTime] = useState();
-  const [skateTime, setSkateTime] = useState("");
   const [hidden, setHidden] = useState(false);
 
   const [title, setTitle] = useState("Set Skate Time");
@@ -73,19 +69,12 @@ const SetSkateStatus = ({ userId, freshUser, singleSpot }) => {
         setSkateActive("activeOff");
         setUsersSkateStatus(userId, { skateStatus: "Inactive" });
         updateCurrentPark(userId, { currentPark: singleSpot.blankName });
-        // updateCheckInTime(userId, {checkInTime: ""});
-        // updateCheckOutTime(userId, {checkOutTime: ""});
-        // updateSkateTime(userId, {skateTime: ""});
         setSkateInactive("inactiveOn");
-        // handleUpdate();
       } else if (skateActive === "activeOff") {
         setSkateActive("activeOn");
         setUsersSkateStatus(userId, { skateStatus: "Active" });
         updateCurrentPark(userId, { currentPark: singleSpot.name });
         updateCheckInTime(userId, { checkInTime: date });
-        console.log(freshUser);
-        // updateCheckOutTime(userId, {checkOutTime: });
-        // updateSkateTime(userId, {skateTime: });
         setSkateInactive("inactiveOff");
       }
     } else if (event.target.id === "inactive") {
@@ -95,16 +84,12 @@ const SetSkateStatus = ({ userId, freshUser, singleSpot }) => {
         updateCurrentPark(userId, { currentPark: singleSpot.name });
         updateCheckInTime(userId, { checkInTime: date });
         console.log(freshUser.checkInTime);
-        // updateCheckOutTime(userId, {checkOutTime: });
-        // updateSkateTime(userId, {skateTime: });
         setSkateActive("activeOn");
       } else if (skateInactive === "inactiveOff") {
         setSkateInactive("inactiveOn");
         setUsersSkateStatus(userId, { skateStatus: "Inactive" });
         updateCurrentPark(userId, { currentPark: singleSpot.blankName });
         updateCheckInTime(userId, { checkInTime: date });
-        // updateCheckOutTime(userId, { checkOutTime: "" });
-        // updateSkateTime(userId, { skateTime: "" });
         setSkateActive("activeOff");
       }
     }
@@ -265,7 +250,6 @@ const SetSkateStatus = ({ userId, freshUser, singleSpot }) => {
                     handleClick(event);
                     handleHiddenTrue();
                   }
-                  // handleUpdate(event);
                 }}
               >
                 <i id="active" className="material-symbols-outlined">
@@ -279,8 +263,6 @@ const SetSkateStatus = ({ userId, freshUser, singleSpot }) => {
                 className={skateInactive}
                 onClick={(event) => {
                   handleClick(event);
-
-                  // handleUpdate(event);
                 }}
               >
                 <i id="inactive" className="fa-solid fa-skull-crossbones"></i>

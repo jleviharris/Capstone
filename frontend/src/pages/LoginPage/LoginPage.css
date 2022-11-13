@@ -7,14 +7,44 @@
   height: 90vh;
 }
 
-/* .conatainer-0 {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-} */
 .loginButton {
+  width: 75%;
+  margin-top: 1rem;
   margin-bottom: 1rem;
+  padding: 0.25rem;
+  border-radius: 7px;
+  font-size: 0.85rem;
+  box-shadow: 0px 0px 2px black;
 }
 .emailLabel {
   margin-top: 1rem;
+}
+.nameLabel {
+  margin-top: 1rem;
+}
+.registerBttn {
+  width: 75%;
+  padding: 0.25rem;
+  margin-bottom: 1rem;
+  box-shadow: 0px 0px 2px black;
+  border-radius: 6px;
+}
+.closeRegister {
+  margin: 0.5rem;
+}
+.loginLink {
+  margin-bottom: 1rem;
+  font-size: 0.75rem;
+}
+.registerLink {
+  margin-bottom: 1rem;
+  font-size: 0.75rem;
+}
+.passwordBttn {
+  background: none !important;
+  border: none;
+  padding: 0 !important;
+  color: #069;
+  cursor: pointer;
+  font-size: 0.75rem;
 }

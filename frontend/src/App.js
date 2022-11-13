@@ -11,7 +11,6 @@ import FriendsPage from "./pages/Friends/friendsPage";
 import HomePage from "./pages/HomePage/HomePage";
 // Component Imports
 import Navbar from "./components/NavBar/NavBar";
-import Footer from "./components/Footer/Footer";
 
 // Util Imports
 import PrivateRoute from "./utils/PrivateRoute";

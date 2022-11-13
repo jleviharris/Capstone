@@ -7,8 +7,6 @@ li {
   display: flex;
   background: rgb(0, 0, 0);
   color: white;
-  /* margin-bottom: 1rem;
-  padding: 1.5rem 2rem; */
   flex-direction: column;
   align-items: center;
 }
@@ -18,6 +16,7 @@ li {
   flex-direction: column;
   padding: 1em;
   align-items: center;
+  margin-bottom: 0;
 }
 
 .navBar button {
@@ -30,23 +29,19 @@ li {
   margin-bottom: 1rem;
 }
 
-.navBar button:hover {
+/* .navBar button:hover {
   background: #f709a0;
   color: rgb(255, 255, 255);
   cursor: pointer;
   border-radius: 12px;
-}
-
-.navBar button:focus {
-  background: #f709a0;
-  color: rgb(255, 255, 255);
-  border-radius: 12px;
-}
+} */
 
 .brand {
   cursor: pointer;
-
   font-weight: 100;
   font-family: "Blaka Hollow";
   font-size: 4rem;
+}
+.navbarBttn {
+  margin-top: 1rem;
 }
