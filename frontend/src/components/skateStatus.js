@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from "react";
 import "../components/Posts/MyPost.css";
 import AxiosSkateStatus from "../Routes/skateStatusRoutes";
@@ -125,115 +124,119 @@ const SetSkateStatus = ({ userId, freshUser, singleSpot }) => {
       <div>
         {hidden && (
           <div className="dropdown">
-            <button
-              className="btn btn-secondary btn-danger dropdown-toggle"
-              type="button"
-              id="dropdownMenu2"
-              data-bs-toggle="dropdown"
-              aria-expanded="false"
+            {/* <button
+            // className="btn btn-secondary btn-danger dropdown-toggle"
+            // type="button"
+            // id="dropdownMenu2"
+            // data-bs-toggle="dropdown"
+            // aria-expanded="false"
             >
-              {title}
-            </button>
-            <ul className="dropdown-menu" aria-labelledby="dropdownMenu2">
-              <li>
-                <button
-                  onClick={() => {
-                    setTitle("30 Minutes");
-                    handleHiddenTrue();
-                    updateSkateTime(userId, { skateTime: "30 Minutes" });
-                    refreshPage();
-                  }}
-                  className="dropdown-item"
-                  type="button"
-                >
-                  30 Minutes
-                </button>
-              </li>
-              <li>
-                <button
-                  onClick={() => {
-                    setTitle("1 Hour");
-                    handleHiddenFalse();
-                    updateSkateTime(userId, { skateTime: "1 Hour" });
-                    refreshPage();
-                  }}
-                  className="dropdown-item"
-                  type="button"
-                >
-                  1 Hour
-                </button>
-              </li>
-              <li>
-                <button
-                  onClick={() => {
-                    setTitle("2 Hours");
-                    handleHiddenFalse();
-                    updateSkateTime(userId, { skateTime: "2 Hours" });
-                    refreshPage();
-                  }}
-                  className="dropdown-item"
-                  type="button"
-                >
-                  2 Hours
-                </button>
-              </li>
-              <li>
-                <button
-                  onClick={() => {
-                    setTitle("3 Hours");
-                    handleHiddenFalse();
-                    updateSkateTime(userId, { skateTime: "3 Hours" });
-                    refreshPage();
-                  }}
-                  className="dropdown-item"
-                  type="button"
-                >
-                  3 Hours
-                </button>
-              </li>
-              <li>
-                <button
-                  onClick={() => {
-                    setTitle("4 Hours");
-                    handleHiddenFalse();
-                    updateSkateTime(userId, { skateTime: "4 Hours" });
-                    refreshPage();
-                  }}
-                  className="dropdown-item"
-                  type="button"
-                >
-                  4 Hours
-                </button>
-              </li>
-              <li>
-                <button
-                  onClick={() => {
-                    setTitle("6 Hours");
-                    handleHiddenFalse();
-                    updateSkateTime(userId, { skateTime: "6 Hours" });
-                    refreshPage();
-                  }}
-                  className="dropdown-item"
-                  type="button"
-                >
-                  6 Hours
-                </button>
-              </li>
-              <li>
-                <button
-                  onClick={() => {
-                    setTitle("8 Hours");
-                    handleHiddenFalse();
-                    updateSkateTime(userId, { skateTime: "8 Hours" });
-                    refreshPage();
-                  }}
-                  className="dropdown-item"
-                  type="button"
-                >
-                  8 Hours
-                </button>
-              </li>
-            </ul>
+              
+            </button> */}
+            {title}
+            {hidden && (
+              <ul>
+                <li>
+                  <button
+                    onClick={() => {
+                      setTitle("30 Minutes");
+                      handleHiddenTrue();
+                      updateSkateTime(userId, { skateTime: "30 Minutes" });
+                      refreshPage();
+                    }}
+                    className="dropdown-item"
+                    type="button"
+                  >
+                    30 Minutes
+                  </button>
+                </li>
+                <li>
+                  <button
+                    onClick={() => {
+                      setTitle("1 Hour");
+                      handleHiddenFalse();
+                      updateSkateTime(userId, { skateTime: "1 Hour" });
+                      refreshPage();
+                    }}
+                    className="dropdown-item"
+                    type="button"
+                  >
+                    1 Hour
+                  </button>
+                </li>
+                <li>
+                  <button
+                    onClick={() => {
+                      setTitle("2 Hours");
+                      handleHiddenFalse();
+                      updateSkateTime(userId, { skateTime: "2 Hours" });
+                      refreshPage();
+                    }}
+                    className="dropdown-item"
+                    type="button"
+                  >
+                    2 Hours
+                  </button>
+                </li>
+                <li>
+                  <button
+                    onClick={() => {
+                      setTitle("3 Hours");
+                      handleHiddenFalse();
+                      updateSkateTime(userId, { skateTime: "3 Hours" });
+                      refreshPage();
+                    }}
+                    className="dropdown-item"
+                    type="button"
+                  >
+                    3 Hours
+                  </button>
+                </li>
+                <li>
+                  <button
+                    onClick={() => {
+                      setTitle("4 Hours");
+                      handleHiddenFalse();
+                      updateSkateTime(userId, { skateTime: "4 Hours" });
+                      refreshPage();
+                    }}
+                    className="dropdown-item"
+                    type="button"
+                  >
+                    4 Hours
+                  </button>
+                </li>
+                <li>
+                  <button
+                    onClick={() => {
+                      setTitle("6 Hours");
+                      handleHiddenFalse();
+                      updateSkateTime(userId, { skateTime: "6 Hours" });
+                      refreshPage();
+                    }}
+                    className="dropdown-item"
+                    type="button"
+                  >
+                    6 Hours
+                  </button>
+                </li>
+                <li>
+                  <button
+                    onClick={() => {
+                      setTitle("8 Hours");
+                      handleHiddenFalse();
+                      updateSkateTime(userId, { skateTime: "8 Hours" });
+                      refreshPage();
+                    }}
+                    className="dropdown-item"
+                    type="button"
+                  >
+                    8 Hours
+                  </button>
+                </li>
+              </ul>
+            )}
+            {/* <ul className="dropdown-menu" aria-labelledby="dropdownMenu2"> */}
           </div>
         )}
       </div>
@@ -263,6 +266,7 @@ const SetSkateStatus = ({ userId, freshUser, singleSpot }) => {
                 className={skateInactive}
                 onClick={(event) => {
                   handleClick(event);
+                  refreshPage();
                 }}
               >
                 <i id="inactive" className="fa-solid fa-skull-crossbones"></i>
