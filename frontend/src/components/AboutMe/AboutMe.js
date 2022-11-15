@@ -37,7 +37,7 @@ const AboutMe = () => {
       <div className="aboutme-container">
         <h3>About Me</h3>
         <br />
-        <p style={{ paddingLeft: "2em" }}>{aboutMe && aboutMe}</p>
+        <p>{aboutMe && aboutMe}</p>
         <br />
         <div className="aboutme-buttons">
           <Button className="aboutme-button" type="button" onClick={handleShow}>

@@ -38,7 +38,7 @@ const Stance = () => {
       <div className="stance-container">
         <h3>Stance</h3>
         <br />
-        <p style={{ paddingLeft: "2em" }}>{stance && stance}</p>
+        <p>{stance && stance}</p>
         <br />
         <div className="aboutme-buttons">
           <Button className="stance-button" type="button" onClick={handleShow}>

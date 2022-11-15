@@ -11,21 +11,28 @@
   display: flex;
   border-radius: 7px;
   width: 90%;
-  height: 10vh;
   margin: auto;
   justify-content: center;
-  margin-bottom: 2em;
+  margin-bottom: 1em;
 }
 
 textarea {
   height: 7em;
+}
+.textAreaAndBttn {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
 }
 
 .postButton {
   color: white;
   border: none;
   outline: none;
-  background: none;
+  padding: 0.25rem;
+  background: var(--bs-primary);
+  border-radius: 5px;
+  margin-top: 1rem;
 }
 
 .postlist {
@@ -271,7 +278,7 @@ textarea {
   align-items: center;
   border: 2px solid white;
   border-radius: 15px;
-  padding-bottom: 1rem;
+  /* padding-bottom: 3rem; */
 }
 
 .name-container {

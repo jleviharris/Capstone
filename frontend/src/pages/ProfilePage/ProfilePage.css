@@ -40,6 +40,14 @@ h3 {
   background: black;
   color: white;
 }
+.aboutme-container p {
+  text-align: center;
+  padding: 0;
+}
+.stance-container p {
+  text-align: center;
+  padding: 0;
+}
 .stance-container {
   border: 1px solid white;
   border-radius: 17px;

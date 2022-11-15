@@ -47,7 +47,7 @@ const CreatePostSpot = ({ userId, handleClick, spotId, singleSpot }) => {
 
   return (
     <form className="postContainer" onSubmit={handlePost}>
-      <div>
+      <div className="textAreaAndBttn">
         <textarea
           type="text"
           placeholder="Write a review"
